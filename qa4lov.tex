@@ -42,7 +42,7 @@
 
 
 %\title{How to access and reuse ontologies in real-world scenarios}
-\title{Towards a QA System Over a Vocabulary Catalogue}
+\title{Towards a Question Answering System Over a Vocabulary Catalogue}
 
 \numberofauthors{1}
 \author{
@@ -72,14 +72,14 @@
 
 \begin{abstract}
 
-There is no doubt that there is an increasing presence of structured data on the web. At the same time, web users have different skills and want to be able to interact with Linked datasets in various manner, such as asking questions in natural language. Over the past years, the QALD challenges series are becoming the references for benchmarking question answering systems. However, QALD questions are targeted on datasets, not on vocabulary catalogues. 
-This paper proposed a first implementation of 14 questions applied in the Linked Open Vocabularies (LOV) catalogue, mainly focused on metadata information retrieval. The goal is to provide to end users yet another access to metadata information available in LOV  using natural language questions. Currently, the system handles almost 92,99\% of the vocabularies in LOV.
+There is no doubt that there is an increasing presence of structured data on the web. At the same time, web users have different skills and want to be able to interact with Linked datasets in various manner, such as asking questions in natural language. Over the last years, the QALD challenges series are becoming the references for benchmarking question answering systems. However, QALD questions are targeted on datasets, not on vocabulary catalogues. 
+This paper proposed a first implementation of 14 questions applied to the Linked Open Vocabularies (LOV) catalogue, mainly focused on metadata information retrieval. The goal is to provide to end users yet another access to metadata information available in LOV  using natural language questions. Currently, the system handles almost 92,99\% of the vocabularies in LOV.
 
 %\keywords{ontology engineering, ontology reuse, LOV, Prot{\'e}g{\'e}, Plugin} 
 \end{abstract}
 
 % Categories for the papers.
-\todo{Replace with the right categories}
+%\todo{Replace with the right categories}
 %\category{M}{Knowledge Management}
 %\category{M.1}{Knowledge engineering methodologies}
 %\category{M.8.}{Knowledge Reuse}
@@ -98,9 +98,9 @@ This paper proposed a first implementation of 14 questions applied in the Linked
 \section{Introduction}\label{sec:introduction}
 The recent years have seen the adoption of semantic web in many domains, generating a mass of structured data available in RDF. Linked data has contributed to interlink different datasets across domains, where publishers use best practices for producing interoperable datasets by reusing ontologies and making alignments. 
 
-However, users need to have a minimal knowledge of SPARQL language and RDF skills to query  RDF datasets. It is one barrier that is overcome by Question Answering (QA) systems, which directly take as input questions in natural language. The need for more advanced tools and QA systems that operate over large repositories of Linked Data has also been the motivation for the QALD Question Answering over Linked Data (QALD) series of workshops \cite{lopezetal2013}. Started in 2011, QALD challenges offer a test sets questions whose answer can be found in the DBpedia and MusicBrainz, with more complex questions added each year. 
+However, users need to have a minimal knowledge of SPARQL language and RDF skills to query  RDF datasets. It is one barrier that is overcome by Question Answering (QA) systems, which directly take as input questions in natural language. The need for more advanced tools and QA systems that operate over large repositories of Linked Data has also been the motivation for the QALD Question Answering over Linked Data (QALD) series of workshops \cite{lopezetal2013}. Started in 2011, QALD challenges offer a test sets questions whose answers can be found in the DBpedia and MusicBrainz, with more complex questions added each year. However, there is not yet a specific set of questions specific to retrieve metadata at schema level.
  
-Vocabulary catalogues and semantic search engines are special datasets as they classes and properties used to model and build datasets available in the Linked Data space. Ontologies are important part in the semantic web layer to build full interoperable datasets. Most vocabulary catalogues provide terms search and APIs. Linked Open Vocabulary (LOV) provides five types of search criteria: metadata search, ontology search, APIs access, bulk file and SPARQL endpoint access \cite{vandenbusschelov}.
+Vocabulary catalogues and semantic search engines are special datasets as classes and properties are used to model and generate datasets available in the Linked Data space. Ontologies are important part in the semantic web layer to build full interoperable datasets. Most vocabulary catalogues provide terms search and APIs to access their datasets. Linked Open Vocabulary provides five types of search criteria: metadata search, ontology search, APIs access, dump file in RDF and SPARQL endpoint access \cite{vandenbusschelov}.
 Consider the following question in natural language \textit{``What is dcterms?''}. The answer in English corresponds to the following SPARQL query in the LOV endpoint:\footnote{\url{http://lov.okfn.org/dataset/lov/sparql}}
 
 \begin{verbatim}
@@ -128,9 +128,9 @@ This paper presents a prototype for a vocabulary backed question answering syste
 \section{Types of Questions}
 \label{sec:questions}
 
-Each version of a vocabulary in LOV contains metadata information which are the following:
+LOV is a highly curated observatory of the semantic vocabularies ecosystem, with the aim of promoting the reuse of well-documented vocabularies in the Linked Data space. Each version of a vocabulary in LOV contains metadata information which are the following:
 \begin{itemize}
-\item A preferred namespace; 
+\item A preferred namespace, useful when the vocabulary is not dereference-able; 
 \item A URI, unique identifier of the vocabulary;
 \item A title, a short text; 
 \item A homepage, mainly a page where to find the documentation of the vocabulary;
@@ -140,7 +140,7 @@ Each version of a vocabulary in LOV contains metadata information which are the 
 \item The different languages in which the vocabulary is available.
 \end{itemize}
 
-Additionally, users could be interested in other facts, such as the number of versions, the number of datasets  using the vocabulary, the number of vocabularies reusing the vocabulary and the category to which belong the vocabulary. A first set of 14 questions in natural language can be handle by the prototype, covering different type of metadata information available in a vocabulary. Table \ref{tab:qtable} shows the list of questions, where in the column ``Template'', [be] can be either the present or the past form of the verb, and [vocab] is the preferred namespace of the vocabulary.    
+Additionally, users could be interested in other interesting facts, such as the number of versions, the number of datasets  using the vocabulary, the number of external vocabularies reusing the vocabulary and the category to which belong the vocabulary. A first set of 14 questions in natural language can be handle by the prototype, covering different type of metadata information available in a vocabulary. Table \ref{tab:qtable} shows the list of questions, where in the column ``Template'', [be] can be either the present or the past form of the verb, and [vocab] is the preferred namespace of the vocabulary.    
 
 \begin{table*}
 \centering
@@ -196,9 +196,9 @@ LOV catalogue. The architecture of the system is illustrated in Fig. 2.
 
 The implementation uses the Quepy tool from Machinalis \cite{quepy2012}. The POS tagset used by Quepy is the Penn Tagset \cite{marcus1993building}. First, regular expressions are defined to match the natural language questions and transform them into an abstract semantic representation. Then, specific templates is defined to handle the questions that the system can handle. To handle regular expressions, Quepy uses the \texttt{refo} library\footnote{\url{https://github.com/machinalis/refo}} which work with regular expressions as objects. 
 
-A vocabulary is defined by a fixed relation \texttt{voaf:Vocabulary} and a POS associated to a \texttt{vann:preferredNamespacePrefix}. LOV uses a unique prefix to identify namespaces, which is a string from length 2 to length 17, although the recommendation for publishers is to use a prefix with less than 10 characters \cite{pybernard12}.  
+A vocabulary is defined by a fixed relation \texttt{voaf:Vocabulary}\footnote{All the prefixes are the ones used at \url{http://lov.okfn.org/dataset/lov/vocabs}} and a POS associated to a \texttt{vann:preferredNamespacePrefix}. LOV uses a unique prefix to identify namespaces, which is a string from length 2 to length 17, although the recommendation for publishers is to use a prefix with less than 10 characters \cite{pybernard12}.  
 
-The syntactic processor is based on regular expressions using POS terms. As a vocabulary is identified by its prefix, we use  the following syntactic patterns: NN, NNS, FW, DT, JJ and VBN. Each question Q1 to Q14 is associated to a unique template. After, when a prefix is recognized, the semantic interpreter uses fixed relations with the English tag, which are properties in RDF triple pattern. 
+The syntactic processor is based on regular expressions using POS terms. As a vocabulary is identified by its prefix, we use  the following syntactic patterns: NN, NNS, FW, DT, JJ and VBN. Each question Q1 to Q14 is associated to a unique template. After, when a prefix is recognized, the semantic interpreter uses fixed relations with the English tag, which are properties in RDF triple pattern. Table \ref{tab:propTable} presents the different fixed relations currently used in the system to cover the set of the 14 questions.
 
 \begin{table}
 \centering
@@ -237,7 +237,7 @@ This first set of questions are not found in the QALD challenges, where answers 
 
 All the questions which generated SPARQL query gives satisfactory results. The most challenging issue is to determine the most suitable POS that cover all the vocabulary prefixes. For example, out of 528\footnote{This number corresponds to the total number of vocabularies inserted in LOV as of January, 8th 2016.} vocabularies in LOV, 13 of them contain an hyphen and the system can not generate query: \texttt{elseweb-modelling}, \texttt{sdmx-dimension}, \texttt{omn-federation}, \\ \texttt{omn-lifecycle}, \texttt{elseweb-data}, \texttt{dbpedia-owl}, \texttt{geo-deling}, \texttt{sdmx-code}, \texttt{wf-invoc}, \texttt{iso-thes}, \texttt{eac-cpf}, \texttt{p-plan} and \texttt{ma-ont}. Moreover, 21 prefixes containing a number (e.g., \texttt{g50k}) and 3 special cases (\texttt{homeActivity}, \texttt{LiMo}, and \texttt{juso.kr}) are not currently covered by the system. Currently, the system handles almost 92,99\% of the prefixes in LOV.
 
-\todo{add challenges}
+%\todo{add challenges}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%
 %%%  4. Related work  %%%
