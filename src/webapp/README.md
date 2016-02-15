@@ -3,7 +3,7 @@
 - Quepy Library 
 - Python 2.7
 - Flask 
-- Datalift or Sesane or fuseki to store LOV dataset
+- Datalift or Sesame or fuseki to store LOV dataset
 
 ## How to launch the src/webapp
 - Download the repository `src/webapp`
