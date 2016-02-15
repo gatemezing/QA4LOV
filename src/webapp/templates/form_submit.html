@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  	
+    <link rel=stylesheet type=text/css href="{{ url_for('static', filename='bootstrap.css') }}">
+    <link rel=stylesheet type=text/css href="{{ url_for('static', filename='style.css') }}">
+    <title>QA4LOV app</title>
+  </head>
+
+  <body>
+    <h2>QA4LOV on the Web!</h2>
+  
+  
+    <div class="col-md-8">
+
+    <div id="container">
+             
+		  <form action="{{ url_for('qa4lov') }}" method="post">
+         <h5>Question here: </h5>
+         <input type="text" class="form-control" placeholder="Query in natural language" name="query">
+         <!--<input type="submit" value="Submit"> -->
+         <button type="submit" class="btn btn-default">Ask Question</button>
+      </form>
+     </div>
+
+     <!--<div id="content">
+            This is the result for the <strong>{{query}}</strong> received for QA4LOV!
+           </div>
+           {{result}}
+       </div> -->
+
+  <div class="footer"> 
+  	QA4LOV - 2016
+  </div>
+ 
+ </div>
+
+
+  </body>
+</html>

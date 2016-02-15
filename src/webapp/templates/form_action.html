@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Question Answering over LOV</title>
+        <link rel=stylesheet type=text/css href="{{ url_for('static', filename='bootstrap.css') }}">
+        <link rel=stylesheet type=text/css href="{{ url_for('static', filename='style.css') }}">
+    </head>
+    <body>
+        <div id="container">
+            <div class="title">
+                <h1>Result of the Question in LOV</h1>
+            </div>
+            <div class="content">
+              <h2>  This is the result for the question <span class="text-info">{{query}}</span> received for QA4LOV! </h2>
+            </div>
+           
+           
+           <div id="content">
+                
+                <code>
+                <pre><center> 
+                    {{result}}
+                    </center>
+                </pre>
+            </code>
+            </div>
+        
+
+        
+
+            <div class="footer"> 
+            QA4LOV - 2016. <a href="/">Ask again</a>
+          </div>
+        </div>
+    </body>
+</html>
