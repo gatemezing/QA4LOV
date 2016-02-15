@@ -12,4 +12,4 @@
 - `$ ./app.py`  
 - The server starts at http://127.0.0.1:5000/
 - Enter a question 
-- Et voila!
+- Et voilà!
