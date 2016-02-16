@@ -154,7 +154,6 @@ LOV catalogue. The architecture of the system is illustrated in Fig. 2.
 \centering
 \caption{Architecture of the system.}
 \includegraphics[scale=.6]{qa4lov-archi.pdf}
-
 \label{fig:q4lovarchi}
 \end{figure}
 
@@ -201,7 +200,10 @@ This first set of questions are not found in the QALD challenges, where answers 
 
 All the questions which generated SPARQL query gives satisfactory results. The most challenging issue is to determine the most suitable POS that cover all the vocabulary prefixes. For example, out of 528\footnote{This number corresponds to the total number of vocabularies inserted in LOV as of January, 8th 2016.} vocabularies in LOV, 13 of them contain an hyphen and the system can not generate query: \texttt{elseweb-modelling}, \texttt{sdmx-dimension}, \texttt{omn-federation}, \\ \texttt{omn-lifecycle}, \texttt{elseweb-data}, \texttt{dbpedia-owl}, \texttt{geo-deling}, \texttt{sdmx-code}, \texttt{wf-invoc}, \texttt{iso-thes}, \texttt{eac-cpf}, \texttt{p-plan} and \texttt{ma-ont}. Moreover, 21 prefixes containing a number (e.g., \texttt{g50k}) and 3 special cases (\texttt{homeActivity}, \texttt{LiMo}, and \texttt{juso.kr}) are not currently covered by the system. Currently, the system handles almost 92,99\% of the prefixes in LOV.
 
-%\todo{add challenges}
+\todo{Find insights into specific challenges when doing QA over LOV}\\
+\todo{Find problems, if different, from the ones posed by e.g., querying DBpedia}\\
+\todo{complete type of questions covered}\\
+\todo{Add a reference to the demo}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%
 %%%  4. Related work  %%%
@@ -224,7 +226,7 @@ We plan to extend the types of queries to more complex ones. Also, we intend to 
 %%%%%%%%%%%%%%%%%%%%%%%%%
 %%%  Acknowledgments  %%%
 %%%%%%%%%%%%%%%%%%%%%%%%%
-\vspace{1mm}
+%\vspace{1mm}
 \paragraph{\textbf{Acknowledgments}} %\label{sec:acknowledgments}
 Thanks to the LOV team and curators for maintaining the LOV catalogue, and Machinalis for the open source Quepy tool. 
 
