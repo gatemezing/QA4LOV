@@ -16,13 +16,6 @@ from dsl import  VersionOf, LabelOf, IsContributorOf, IsCreatorOf, IsVocab, HasV
      ReuseVocab, UseByDataset, HasURI
 
 
-class Band(Particle):
-    regex = Question(Pos("DT")) + Plus(Pos("NN") | Pos("NNP"))
-
-    def interpret(self, match):
-        name = match.words.tokens.title()
-        return IsBand() + HasKeyword(name)
-
 
 class Vocab(Particle):
     regex = Plus(Pos("NN") | Pos("NNS") | Pos("FW") | Pos("DT") | Pos("JJ") | Pos("VBN"))
@@ -140,21 +133,6 @@ class VocabLanguageQuestion(QuestionTemplate):
     def interpret(self, match):
         member_lang = HasLanguage(match.vocab)
         return member_lang, "literal"
-
-
-class FoundationQuestion(QuestionTemplate):
-    """
-    Regex for questions about the creation of a band.
-    Ex: "When was Pink Floyd founded?"
-        "When was Korn formed?"
-    """
-
-    regex = Pos("WRB") + Lemma("be") + Band() + \
-        (Lemma("form") | Lemma("found")) + Question(Pos("."))
-
-    def interpret(self, match):
-        active_years = ActiveYears(match.band)
-        return active_years, "literal"
 
 
 
