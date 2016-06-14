@@ -1,12 +1,9 @@
 # coding: utf-8
 
-# Copyright (c) 2012, Machinalis S.R.L.
-# This file is part of quepy and is distributed under the Modified BSD License.
-# You should have received a copy of license in the LICENSE file.
+# This file is based on quepy file sample for settings
 #
-# Authors: Rafael Carrascosa <rcarrascosa@machinalis.com>
-#          Gonzalo Garcia Berrotaran <ggarcia@machinalis.com>
-
+# Author: Ghislain A. Atemezing
+#          ghislain.atemezing@gmail.com
 """
 Settings.
 """
@@ -35,4 +32,5 @@ PREFIX vann:<http://purl.org/vocab/vann/>
 PREFIX voaf:<http://purl.org/vocommons/voaf#>
 PREFIX dcterms:<http://purl.org/dc/terms/>
 PREFIX dcat:<http://www.w3.org/ns/dcat#>
+
 """

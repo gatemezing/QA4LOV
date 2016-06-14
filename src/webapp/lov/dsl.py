@@ -64,6 +64,12 @@ class CreatorOf(FixedRelation):
     relation = "dcterms:creator"
     reverse = True
 
+
+class Name(FixedRelation):
+    relation = "foaf:name"
+    reverse = True
+
+
 class IsCreatorOf(FixedRelation):
     relation = "dcterms:creator"
     reverse = True

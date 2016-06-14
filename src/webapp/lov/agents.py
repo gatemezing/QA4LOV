@@ -1,6 +1,6 @@
 # coding: utf-8
 
-# This file is based on quepy file sample for creating agents 
+# This file is based on quepy file sample for creating agents
 #
 # Author: Ghislain A. Atemezing
 #          ghislain.atemezing@gmail.com
@@ -13,8 +13,15 @@ from refo import Plus, Question
 from quepy.dsl import HasKeyword
 from quepy.parsing import Lemma, Lemmas, Pos, QuestionTemplate, Particle
 from dsl import  VersionOf, LabelOf, IsContributorOf, IsCreatorOf, IsVocab, HasVersion, HasLanguage, \
-     ReuseVocab, UseByDataset, HasURI
+     ReuseVocab, UseByDataset, HasURI, Name
 
+
+class Band(Particle):
+    regex = Question(Pos("DT")) + Plus(Pos("NN") | Pos("NNP"))
+
+    def interpret(self, match):
+        name = match.words.tokens.title()
+        return IsBand() + HasKeyword(name)
 
 
 class Vocab(Particle):
@@ -29,6 +36,7 @@ class VocabContributorsQuestion(QuestionTemplate):
     Regex for questions about band member.
     Ex: "adms contributors"
         "What are the contributors of adms?"
+        result are the names 
     """
 
     regex1 = Vocab() + Lemma("contributor")
@@ -40,7 +48,8 @@ class VocabContributorsQuestion(QuestionTemplate):
 
     def interpret(self, match):
         member = IsContributorOf(match.vocab)
-        return member, "literal"
+        member_name = Name(member)
+        return member_name, "literal"
 
 
 class VocabCreatorQuestion(QuestionTemplate):
@@ -48,6 +57,7 @@ class VocabCreatorQuestion(QuestionTemplate):
     regex for creators of vocabs.
     Ex: "adms creator"
         "What are the creators of adms?"
+        Note: seems not to work. Todo: Fix me
     """
 
     regex1 = Vocab() + Lemma("creator")
@@ -59,6 +69,7 @@ class VocabCreatorQuestion(QuestionTemplate):
 
     def interpret(self, match):
         member = IsCreatorOf(match.vocab)
+        #member_name = Name(member)
         return member, "literal"
 
 
@@ -133,6 +144,9 @@ class VocabLanguageQuestion(QuestionTemplate):
     def interpret(self, match):
         member_lang = HasLanguage(match.vocab)
         return member_lang, "literal"
+
+
+
 
 
 

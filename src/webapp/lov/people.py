@@ -14,7 +14,7 @@ from quepy.dsl import HasKeyword
 from quepy.parsing import Lemma, Lemmas, Pos, QuestionTemplate, Particle
 from dsl import IsPerson, LabelOf, DefinitionOf, BirthDateOf, IsVocab, ReleaseDateOf, \
     TitleOf, PublisherOf, CreatorOf, ModifiedDateOf, IsTitleOf, IsHomePageOf, HasURI, \
-    HasCategory
+    HasCategory, Name
 
 
 
@@ -123,6 +123,7 @@ class ModifiedDateQuestion(QuestionTemplate):
 class WhoIsCreatorQuestion(QuestionTemplate):
     """
     Ex: "Who is creator of dcterms?"
+    Note: seems not working, fixme
     """
 
     regex = Lemmas("who is") + Lemmas("creator of") + Vocabulary() + \
@@ -130,8 +131,9 @@ class WhoIsCreatorQuestion(QuestionTemplate):
 
     def interpret(self, match):
         creator_uri = CreatorOf(match.vocabulary)
-
+        #creator_name = Name(creator_uri)
         return creator_uri, "literal"
+        #return creator_name, "literal"
 
 
 class HowOldIsQuestion(QuestionTemplate):
@@ -165,6 +167,7 @@ class WhatIs(QuestionTemplate):
 class WhoPublish(QuestionTemplate):
     """
     Ex: "Who publish foaf?"
+    return the name not the uri
     """
 
     regex = Lemma("who") + Lemma("publish") + Vocabulary() + \
@@ -172,7 +175,9 @@ class WhoPublish(QuestionTemplate):
 
     def interpret(self, match):
         publisher = PublisherOf(match.vocabulary)
-        return publisher, "literal"
+        publisher_name = Name(publisher)
+        #return publisher, "literal"
+        return publisher_name, "literal"
 
 
 class WhatCategory(QuestionTemplate):
