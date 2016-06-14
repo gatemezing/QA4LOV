@@ -52,6 +52,26 @@ class VocabContributorsQuestion(QuestionTemplate):
         return member_name, "literal"
 
 
+class VocabURIContributorsQuestion(QuestionTemplate):
+    """
+    Regex for questions about band member.
+    Ex: "adms uri contributors"
+        "What are the uri contributors of adms?"
+        result are uris
+    """
+
+    regex1 = Vocab() + Lemmas("uri contributor")
+    regex2 = Lemmas("uri contributor") + Pos("IN") + Vocab()
+    regex3 = Pos("WP") + Lemma("be") + Pos("DT") + Lemmas("uri contributor") + \
+        Pos("IN") + Vocab()
+
+    regex = (regex1 | regex2 | regex3) + Question(Pos("."))
+
+    def interpret(self, match):
+        member = IsContributorOf(match.vocab)
+        return member, "literal"
+
+
 class VocabCreatorQuestion(QuestionTemplate):
     """
     regex for creators of vocabs.

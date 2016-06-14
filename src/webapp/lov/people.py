@@ -180,6 +180,21 @@ class WhoPublish(QuestionTemplate):
         return publisher_name, "literal"
 
 
+class WhoPublishURI(QuestionTemplate):
+    """
+    Ex: "What is the uri of adms publishers?"
+    return the uri
+    """
+
+    regex = Lemmas("what is") + Lemmas("the uri of ") +  Vocabulary() + Lemma("publisher") +  \
+        Question(Pos("."))
+
+    def interpret(self, match):
+        publisher = PublisherOf(match.vocabulary)
+        return publisher, "literal"
+        
+
+
 class WhatCategory(QuestionTemplate):
     """
     Ex: "What is the category of foaf?"
