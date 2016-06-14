@@ -1,6 +1,6 @@
 # coding: utf-8
 
-# This file is based on quepy file 
+# This file is based on quepy file sample for creating agents 
 #
 # Author: Ghislain A. Atemezing
 #          ghislain.atemezing@gmail.com
