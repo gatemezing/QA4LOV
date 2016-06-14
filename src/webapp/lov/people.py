@@ -1,11 +1,9 @@
 # coding: utf-8
 
-# Copyright (c) 2012, Machinalis S.R.L.
-# This file is part of quepy and is distributed under the Modified BSD License.
-# You should have received a copy of license in the LICENSE file.
+# This file is based on quepy file 
 #
-# Authors: Rafael Carrascosa <rcarrascosa@machinalis.com>
-#          Gonzalo Garcia Berrotaran <ggarcia@machinalis.com>
+# Author: Ghislain A. Atemezing
+#          ghislain.atemezing@gmail.com
 
 """
 vocabulary related regex
@@ -161,6 +159,20 @@ class WhatIs(QuestionTemplate):
     def interpret(self, match):
         definition = DefinitionOf(match.vocabulary)
         return definition, "define"
+
+
+
+class WhoPublish(QuestionTemplate):
+    """
+    Ex: "Who publish foaf?"
+    """
+
+    regex = Lemma("who") + Lemma("publish") + Vocabulary() + \
+        Question(Pos("."))
+
+    def interpret(self, match):
+        publisher = PublisherOf(match.vocabulary)
+        return publisher, "literal"
 
 
 class WhatCategory(QuestionTemplate):
