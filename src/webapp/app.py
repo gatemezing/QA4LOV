@@ -41,6 +41,7 @@ def qa4lov():
     try:
         #result = subprocess.call("python main.py query", shell=True)
         #arg_param = ['query']
+        print query
         lov_cmd = 'python main.py' + ' '+query
         result = subprocess.check_output(lov_cmd, shell=True)
         #print query

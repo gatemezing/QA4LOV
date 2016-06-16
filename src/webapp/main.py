@@ -12,7 +12,7 @@ import datetime
 import quepy
 from SPARQLWrapper import SPARQLWrapper, JSON
 
-
+# using directly the LOV endpoint to query
 sparql = SPARQLWrapper("http://lov.okfn.org/dataset/lov/sparql")
 
 lov = quepy.install("lov")
@@ -191,9 +191,10 @@ if __name__ == "__main__":
     }
 
     for question in questions:
-        #print question
-        #print "-" * len(question)
-
+        ## Here we print the question
+        print question
+        print "-" * 2* len(question)
+    
         target, query, metadata = lov.get_query(question)
 
         if isinstance(metadata, tuple):
