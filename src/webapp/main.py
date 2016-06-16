@@ -203,7 +203,7 @@ if __name__ == "__main__":
             metadata = None
 
         if query is None:
-            print "Query not generated :(\n"
+            print "Sorry. I don't understand your question...\n"
             continue
 
         #print query
@@ -216,7 +216,7 @@ if __name__ == "__main__":
             results = sparql.query().convert()
 
             if not results["results"]["bindings"]:
-                print "No answer found :("
+                print "Sorry. I am not able to answer your question..."
                 continue
 
         print_handlers[query_type](results, target, metadata)
