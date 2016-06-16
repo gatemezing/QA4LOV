@@ -12,7 +12,7 @@ import datetime
 import quepy
 from SPARQLWrapper import SPARQLWrapper, JSON
 
-#sparql = SPARQLWrapper("http://localhost:9091/sparql/data")
+
 sparql = SPARQLWrapper("http://lov.okfn.org/dataset/lov/sparql")
 
 lov = quepy.install("lov")
