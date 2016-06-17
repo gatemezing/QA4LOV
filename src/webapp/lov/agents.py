@@ -15,7 +15,7 @@ from quepy.parsing import Lemma, Lemmas, Pos, QuestionTemplate, Particle
 import dsl as dsl
 
 
-class Vocab(Particle):
+class Vocabulary(Particle):
     regex = Plus(Pos("NN") | Pos("NNS") | Pos("FW") | Pos("DT") | Pos("JJ") | Pos("VBN"))
 
     def interpret(self, match):
@@ -38,16 +38,15 @@ class VocabContributorsQuestion(QuestionTemplate):
         "What are the contributors of adms?"
         result are the names 
     """
-
-    regex1 = Vocab() + Lemma("contributor")
-    regex2 = Lemma("contributor") + Pos("IN") + Vocab()
+    regex1 = Vocabulary() + Lemma("contributor")
+    regex2 = Lemma("contributor") + Pos("IN") + Vocabulary()
     regex3 = Pos("WP") + Lemma("be") + Pos("DT") + Lemma("contributor") + \
-        Pos("IN") + Vocab()
+        Pos("IN") + Vocabulary()
 
     regex = (regex1 | regex2 | regex3) + Question(Pos("."))
 
     def interpret(self, match):
-        member = dsl.IsContributorOf(match.vocab)
+        member = dsl.IsContributorOf(match.vocabulary)
         member_name = dsl.Name(member)
         return member_name, "agent"
 
@@ -59,16 +58,15 @@ class VocabURIContributorsQuestion(QuestionTemplate):
         "What are the uri contributors of adms?"
         result are uris
     """
-
-    regex1 = Vocab() + Lemmas("uri contributor")
-    regex2 = Lemmas("uri contributor") + Pos("IN") + Vocab()
+    regex1 = Vocabulary() + Lemmas("uri contributor")
+    regex2 = Lemmas("uri contributor") + Pos("IN") + Vocabulary()
     regex3 = Pos("WP") + Lemma("be") + Pos("DT") + Lemmas("uri contributor") + \
-        Pos("IN") + Vocab()
+        Pos("IN") + Vocabulary()
 
     regex = (regex1 | regex2 | regex3) + Question(Pos("."))
 
     def interpret(self, match):
-        member = dsl.IsContributorOf(match.vocab)
+        member = dsl.IsContributorOf(match.vocabulary)
         return member, "url"
 
 
@@ -79,16 +77,16 @@ class VocabCreatorQuestion(QuestionTemplate):
         "What are the creators of adms?"
         Note: seems not to work. Todo: Fix me
     """
-    regex0 = Lemmas("who is") + Lemmas("creator of") + Vocab()
-    regex1 = Vocab() + Lemma("creator")
-    regex2 = Lemma("creator") + Pos("IN") + Vocab()
+    regex0 = Lemmas("who is") + Lemmas("creator of") + Vocabulary()
+    regex1 = Vocabulary() + Lemma("creator")
+    regex2 = Lemma("creator") + Pos("IN") + Vocabulary()
     regex3 = Pos("WP") + Lemma("be") + Pos("DT") + Lemma("creator") + \
-        Pos("IN") + Vocab()
+        Pos("IN") + Vocabulary()
 
     regex = (regex0 | regex1 | regex2 | regex3) + Question(Pos("."))
 
     def interpret(self, match):
-        creator = dsl.IsCreatorOf(match.vocab)
+        creator = dsl.IsCreatorOf(match.vocabulary)
         creator_name = dsl.Name(creator)
         return creator_name, "agent"
 
@@ -98,12 +96,11 @@ class WhoPublishQuestion(QuestionTemplate):
     Ex: "Who publish foaf?"
     return the name not the uri
     """
-
-    regex0 = Lemma("who") + Lemma("publish") + Vocab()
-    regex1 = Vocab() + Lemma("publish")
-    regex2 = Lemma("publish") + Pos("IN") + Vocab()
-    regex3 = Pos("WP") + Lemma("be") + Pos("DT") + Lemma("publish") + Pos("IN") + Vocab()
-    regex4 = Lemmas("where be") + Vocab() + Lemma("from")
+    regex0 = Lemma("who") + Lemma("publish") + Vocabulary()
+    regex1 = Vocabulary() + Lemma("publish")
+    regex2 = Lemma("publish") + Pos("IN") + Vocabulary()
+    regex3 = Pos("WP") + Lemma("be") + Pos("DT") + Lemma("publish") + Pos("IN") + Vocabulary()
+    regex4 = Lemmas("where be") + Vocabulary() + Lemma("from")
 
     regex = (regex0 | regex1 | regex2 | regex3 | regex4) + Question(Pos("."))
 

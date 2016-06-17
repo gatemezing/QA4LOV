@@ -102,7 +102,6 @@ class WhatCategory(QuestionTemplate):
 
 
 # confusing. How to distinguish with namespace?
-# TODO: fixme
 class WhatIsTitleQuestion(QuestionTemplate):
     """
     Ex: "What is the title of dcterms?"
@@ -138,7 +137,7 @@ class HowManyVocabQuestion(QuestionTemplate):
     regex = regex1 + Question(Pos("."))
 
     def interpret(self, match):
-        number = dsl.ReuseVocab(match.vocab)
+        number = dsl.ReuseVocab(match.vocabulary)
         return number, "literal"
 
 
@@ -153,7 +152,7 @@ class HowManyDatasetQuestion(QuestionTemplate):
     regex = regex1 + Question(Pos("."))
 
     def interpret(self, match):
-        numberd = dsl.UseByDataset(match.vocab)
+        numberd = dsl.UseByDataset(match.vocabulary)
         return numberd, "literal"
 
 
@@ -171,7 +170,7 @@ class VocabVersionQuestion(QuestionTemplate):
     regex = (regex1 | regex2 | regex3) + Question(Pos("."))
 
     def interpret(self, match):
-        member = dsl.HasVersion(match.vocab)
+        member = dsl.HasVersion(match.vocabulary)
         return member, "url"
 
 
@@ -187,6 +186,6 @@ class VocabLanguageQuestion(QuestionTemplate):
     regex = (regex1 | regex2 | regex3) + Question(Pos("."))
 
     def interpret(self, match):
-        lang = dsl.HasLanguage(match.vocab)
+        lang = dsl.HasLanguage(match.vocabulary)
         lang_label = dsl.LabelOf(lang)
         return lang_label, "lang"
