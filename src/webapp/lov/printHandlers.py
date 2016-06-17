@@ -15,9 +15,11 @@ def print_literal(results, target, isHtml, metadata=None):
     for result in results["results"]["bindings"]:
         literal = result[target]["value"]
         if metadata:
-            print ("<p>" if isHtml else "") + metadata.format(literal) + ("</p>" if isHtml else "")
+            literal = metadata.format(literal)
+        if isHtml:
+            print "<p>" + literal + "</p>"
         else:
-            print ("<p>" if isHtml else "") + literal + ("</p>" if isHtml else "")
+            print literal
 
 
 def print_agent(results, target, isHtml, metadata=None):
@@ -26,7 +28,8 @@ def print_agent(results, target, isHtml, metadata=None):
         if metadata:
             literal = metadata.format(literal)
         if isHtml:
-            print "<p><a href='http://lov.okfn.org/dataset/lov/agents/"+urllib.quote(literal, safe='')+"'>"+literal+"</a></p>"
+            print "<p><a href='http://lov.okfn.org/dataset/lov/agents/"\
+                  + urllib.quote(literal, safe='')+"'>"+literal+"</a></p>"
         else:
             print literal
 
@@ -35,27 +38,37 @@ def print_category(results, target, isHtml, metadata=None):
     for result in results["results"]["bindings"]:
         literal = result[target]["value"]
         if metadata:
-            print ("<p>" if isHtml else "") + metadata.format(literal) + ("</p>" if isHtml else "")
+            literal = metadata.format(literal)
+        if isHtml:
+            print "<p><a href='http://lov.okfn.org/dataset/lov/vocabs?tag=" \
+                  + urllib.quote(literal, safe='') + "'>" + literal + "</a></p>"
         else:
-            print ("<p>" if isHtml else "") + literal + ("</p>" if isHtml else "")
+            print literal
 
 
 def print_lang(results, target, isHtml, metadata=None):
     for result in results["results"]["bindings"]:
         literal = result[target]["value"]
         if metadata:
-            print ("<p>" if isHtml else "") + metadata.format(literal) + ("</p>" if isHtml else "")
+            literal = metadata.format(literal)
+        if isHtml:
+            print "<p><a href='http://lov.okfn.org/dataset/lov/vocabs?lang=" \
+                  + urllib.quote(literal, safe='') + "'>" + literal + "</a></p>"
         else:
-            print ("<p>" if isHtml else "") + literal + ("</p>" if isHtml else "")
+            print literal
 
 
 def print_url(results, target, isHtml, metadata=None):
     for result in results["results"]["bindings"]:
         literal = result[target]["value"]
         if metadata:
-            print ("<p>" if isHtml else "") + metadata.format(literal) + ("</p>" if isHtml else "")
+            literal = metadata.format(literal)
+        if isHtml:
+            print "<p><a href='" \
+                  + literal + "'>" + literal + "</a></p>"
         else:
-            print ("<p>" if isHtml else "") + literal + ("</p>" if isHtml else "")
+            print literal
+
 
 def print_define(results, target, isHtml, metadata=None):
     for result in results["results"]["bindings"]:
@@ -64,9 +77,6 @@ def print_define(results, target, isHtml, metadata=None):
         else:
             print "not available in English"
 
-        #else:
-        #    print result[target]["value"]
-        #    print
 
 
 def print_enum(results, target, isHtml, metadata=None):
