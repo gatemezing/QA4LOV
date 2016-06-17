@@ -26,7 +26,7 @@ def print_agent(results, target, isHtml, metadata=None):
         if metadata:
             literal = metadata.format(literal)
         if isHtml:
-            print "<p><a href='http://lov.okfn.org/dataset/lov/agents/"+urllib.quote('literal', safe='')+"'>"+literal+"</a></p>"
+            print "<p><a href='http://lov.okfn.org/dataset/lov/agents/"+urllib.quote(literal, safe='')+"'>"+literal+"</a></p>"
         else:
             print literal
 
