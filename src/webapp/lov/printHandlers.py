@@ -17,7 +17,7 @@ def print_literal(results, target, isHtml, metadata=None):
         if metadata:
             literal = metadata.format(literal)
         if isHtml:
-            print "<p>" + literal + "</p>"
+            print literal
         else:
             print literal
 
