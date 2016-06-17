@@ -81,6 +81,12 @@ if __name__ == "__main__":
 
     print_handlers = {
         "define": printHandlers.print_define,
+        "category": printHandlers.print_category,
+        "agent": printHandlers.print_agent,
+        "url": printHandlers.print_url,
+        "lang": printHandlers.print_lang,
+        "enum": printHandlers.print_enum,
+        "age": printHandlers.print_age,
         "literal": printHandlers.print_literal
     }
 

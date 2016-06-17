@@ -16,20 +16,21 @@ from dsl import  VersionOf, LabelOf, IsContributorOf, IsCreatorOf, IsVocab, HasV
      ReuseVocab, UseByDataset, HasURI, Name
 
 
-class Band(Particle):
-    regex = Question(Pos("DT")) + Plus(Pos("NN") | Pos("NNP"))
-
-    def interpret(self, match):
-        name = match.words.tokens.title()
-        return IsBand() + HasKeyword(name)
-
-
 class Vocab(Particle):
     regex = Plus(Pos("NN") | Pos("NNS") | Pos("FW") | Pos("DT") | Pos("JJ") | Pos("VBN"))
 
     def interpret(self, match):
         name = match.words.tokens
         return IsVocab() + HasKeyword(name)
+
+
+class Person(Particle):
+    regex = Plus(Pos("NN") | Pos("NNS") | Pos("NNP") | Pos("NNPS"))
+
+    def interpret(self, match):
+        name = match.words.tokens
+        return IsPerson() + HasKeyword(name)
+
 
 class VocabContributorsQuestion(QuestionTemplate):
     """
@@ -49,7 +50,7 @@ class VocabContributorsQuestion(QuestionTemplate):
     def interpret(self, match):
         member = IsContributorOf(match.vocab)
         member_name = Name(member)
-        return member_name, "literal"
+        return member_name, "agent"
 
 
 class VocabURIContributorsQuestion(QuestionTemplate):
@@ -69,7 +70,7 @@ class VocabURIContributorsQuestion(QuestionTemplate):
 
     def interpret(self, match):
         member = IsContributorOf(match.vocab)
-        return member, "literal"
+        return member, "url"
 
 
 class VocabCreatorQuestion(QuestionTemplate):
@@ -79,93 +80,39 @@ class VocabCreatorQuestion(QuestionTemplate):
         "What are the creators of adms?"
         Note: seems not to work. Todo: Fix me
     """
-
+    regex0 = Lemmas("who is") + Lemmas("creator of") + Vocab()
     regex1 = Vocab() + Lemma("creator")
     regex2 = Lemma("creator") + Pos("IN") + Vocab()
     regex3 = Pos("WP") + Lemma("be") + Pos("DT") + Lemma("creator") + \
         Pos("IN") + Vocab()
 
-    regex = (regex1 | regex2 | regex3) + Question(Pos("."))
+    regex = (regex0 | regex1 | regex2 | regex3) + Question(Pos("."))
 
     def interpret(self, match):
-        member = IsCreatorOf(match.vocab)
-        #member_name = Name(member)
-        return member, "literal"
+        creator = IsCreatorOf(match.vocab)
+        creator_name = Name(creator)
+        return creator_name, "agent"
 
 
-class HowManyVocabQuestion(QuestionTemplate):
+class WhoPublishQuestion(QuestionTemplate):
     """
-    regex for reusing vocabs.
-    Ex: "how many vocabularies reuse adms?"
-        
+    Ex: "Who publish foaf?"
+    return the name not the uri
     """
 
-    regex1 = Lemmas("how many") + (Lemma("vocabularies")| Lemma("vocabulary")) + Lemma("reuse") + \
-     Vocab() 
-    
-    regex = regex1 + Question(Pos("."))
+    regex0 = Lemma("who") + Lemma("publish") + Vocab()
+    regex1 = Vocab() + Lemma("publish")
+    regex2 = Lemma("publish") + Pos("IN") + Vocab()
+    regex3 = Pos("WP") + Lemma("be") + Pos("DT") + Lemma("publish") + Pos("IN") + Vocab()
+    regex4 = Lemmas("where be") + Vocab() + Lemma("from")
+
+    regex = (regex0 | regex1 | regex2 | regex3 | regex4) + Question(Pos("."))
 
     def interpret(self, match):
-        number = ReuseVocab(match.vocab)
-        return number, "literal"
-
-
-class HowManyDatasetQuestion(QuestionTemplate):
-    """
-    regex for using datasets.
-    Ex: "how many datasets use adms?"
-        
-    """
-
-    regex1 = Lemmas("how many") + Lemma("datasets") + Lemma("use") + \
-     Vocab() 
-    
-    regex = regex1 + Question(Pos("."))
-
-    def interpret(self, match):
-        numberd = UseByDataset(match.vocab)
-        return numberd, "literal"
-
-
-class VocabCreatorQuestion(QuestionTemplate):
-    """
-    regex for vocab versions.
-    Ex: "adms versions"
-        "What are the versions of adms?"
-    """
-
-    regex1 = Vocab() + Lemma("version")
-    regex2 = Lemma("version") + Pos("IN") + Vocab()
-    regex3 = Pos("WP") + Lemma("be") + Pos("DT") + Lemma("version") + \
-        Pos("IN") + Vocab()
-
-    regex = (regex1 | regex2 | regex3) + Question(Pos("."))
-
-    def interpret(self, match):
-        member = HasVersion(match.vocab)
-        return member, "literal"
-
-
-
-class VocabLanguageQuestion(QuestionTemplate):
-    """
-    regex for vocab languages.
-    Ex: 
-        "What are the languages of dcat?"
-    """
-
-    regex1 = Vocab() + Lemma("language")
-    regex2 = Lemma("language") + Pos("IN") + Vocab()
-    regex3 = Pos("WP") + Lemma("be") + Pos("DT") + Lemma("language") + \
-        Pos("IN") + Vocab()
-
-    regex = (regex1 | regex2 | regex3) + Question(Pos("."))
-
-    def interpret(self, match):
-        member_lang = HasLanguage(match.vocab)
-        return member_lang, "literal"
-
-
+        publisher = PublisherOf(match.vocabulary)
+        publisher_name = Name(publisher)
+        #return publisher, "literal"
+        return publisher_name, "agent"
 
 
 

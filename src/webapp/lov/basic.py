@@ -42,8 +42,8 @@ class WhatIs(QuestionTemplate):
 
         return label, "define"
 
-
-class ListEntity(QuestionTemplate):
+'''
+lass ListEntity(QuestionTemplate):
     """
     Regex for questions like "List Microsoft software"
     """
@@ -58,9 +58,10 @@ class ListEntity(QuestionTemplate):
         target = HasType(target_type) + IsRelatedTo(entity)
         label = LabelOf(target)
 
-        return label, "enum"
+        return label, "enum"*/
+'''
 
-
+'''
 class WhatTimeIs(QuestionTemplate):
     """
     Regex for questions about the time
@@ -81,8 +82,9 @@ class WhatTimeIs(QuestionTemplate):
         utc_offset = UTCof(place)
 
         return utc_offset, "time"
+'''
 
-
+'''
 class WhereIsQuestion(QuestionTemplate):
     """
     Ex: "where in the world is the Eiffel Tower"
@@ -99,3 +101,4 @@ class WhereIsQuestion(QuestionTemplate):
         location_name = LabelOf(location)
 
         return location_name, "enum"
+'''

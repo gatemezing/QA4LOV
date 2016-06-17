@@ -8,6 +8,8 @@
 import time
 import datetime
 import random
+import urllib
+
 
 def print_literal(results, target, isHtml, metadata=None):
     for result in results["results"]["bindings"]:
@@ -17,6 +19,44 @@ def print_literal(results, target, isHtml, metadata=None):
         else:
             print ("<p>" if isHtml else "") + literal + ("</p>" if isHtml else "")
 
+
+def print_agent(results, target, isHtml, metadata=None):
+    for result in results["results"]["bindings"]:
+        literal = result[target]["value"]
+        if metadata:
+            if isHtml:
+                print "<p><a href='http://lov.okfn.org/dataset/lov/agents/"+urllib.quote('literal', safe='')+"'>"+metadata.format(literal)+"</a></p>"
+            else:
+                print metadata.format(literal)
+        else:
+            print ("<p>" if isHtml else "") + literal + ("</p>" if isHtml else "")
+
+
+def print_category(results, target, isHtml, metadata=None):
+    for result in results["results"]["bindings"]:
+        literal = result[target]["value"]
+        if metadata:
+            print ("<p>" if isHtml else "") + metadata.format(literal) + ("</p>" if isHtml else "")
+        else:
+            print ("<p>" if isHtml else "") + literal + ("</p>" if isHtml else "")
+
+
+def print_lang(results, target, isHtml, metadata=None):
+    for result in results["results"]["bindings"]:
+        literal = result[target]["value"]
+        if metadata:
+            print ("<p>" if isHtml else "") + metadata.format(literal) + ("</p>" if isHtml else "")
+        else:
+            print ("<p>" if isHtml else "") + literal + ("</p>" if isHtml else "")
+
+
+def print_url(results, target, isHtml, metadata=None):
+    for result in results["results"]["bindings"]:
+        literal = result[target]["value"]
+        if metadata:
+            print ("<p>" if isHtml else "") + metadata.format(literal) + ("</p>" if isHtml else "")
+        else:
+            print ("<p>" if isHtml else "") + literal + ("</p>" if isHtml else "")
 
 def print_define(results, target, isHtml, metadata=None):
     for result in results["results"]["bindings"]:

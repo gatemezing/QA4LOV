@@ -5,6 +5,6 @@ Init for lov quepy.
 """
 
 from basic import *
-from people import *
-from authors import *
+from vocabs import *
+from vocabs import *
 from agents import *
