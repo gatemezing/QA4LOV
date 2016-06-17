@@ -5,113 +5,27 @@ Main script for lov quepy.
 """
 
 import sys
-import time
-import random
-import datetime
+import argparse
 
 import quepy
 from SPARQLWrapper import SPARQLWrapper, JSON
+import lov.printHandlers as printHandlers
 
 # using directly the LOV endpoint to query
 sparql = SPARQLWrapper("http://lov.okfn.org/dataset/lov/sparql")
 
 lov = quepy.install("lov")
 
-def print_define(results, target, metadata=None):
-    for result in results["results"]["bindings"]:
-        if result[target]["xml:lang"] == "en":
-            print result[target]["value"]
-        else:
-            print "not available in English"
-
-        #else:
-        #    print result[target]["value"]
-        #    print 
-
-def print_enum(results, target, metadata=None):
-    used_labels = []
-
-    for result in results["results"]["bindings"]:
-        if result[target]["type"] == u"literal":
-            if result[target]["xml:lang"] == "en":
-                label = result[target]["value"]
-                if label not in used_labels:
-                    used_labels.append(label)
-                    print label
-
-
-def print_literal(results, target, metadata=None):
-    for result in results["results"]["bindings"]:
-        literal = result[target]["value"]
-        if metadata:
-            print metadata.format(literal)
-        else:
-            print literal
-
-
-def print_time(results, target, metadata=None):
-    gmt = time.mktime(time.gmtime())
-    gmt = datetime.datetime.fromtimestamp(gmt)
-
-    for result in results["results"]["bindings"]:
-        offset = result[target]["value"].replace(u"−", u"-")
-
-        if "to" in offset:
-            from_offset, to_offset = offset.split("to")
-            from_offset, to_offset = int(from_offset), int(to_offset)
-
-            if from_offset > to_offset:
-                from_offset, to_offset = to_offset, from_offset
-
-            from_delta = datetime.timedelta(hours=from_offset)
-            to_delta = datetime.timedelta(hours=to_offset)
-
-            from_time = gmt + from_delta
-            to_time = gmt + to_delta
-
-            location_string = random.choice(["where you are",
-                                             "your location"])
-
-            print "Between %s and %s, depending %s" % \
-                  (from_time.strftime("%H:%M"),
-                   to_time.strftime("%H:%M on %A"),
-                   location_string)
-
-        else:
-            offset = int(offset)
-
-            delta = datetime.timedelta(hours=offset)
-            the_time = gmt + delta
-
-            print the_time.strftime("%H:%M on %A")
-
-
-def print_age(results, target, metadata=None):
-    assert len(results["results"]["bindings"]) == 1
-
-    birth_date = results["results"]["bindings"][0][target]["value"]
-    year, month, days = birth_date.split("-")
-
-    birth_date = datetime.date(int(year), int(month), int(days))
-
-    now = datetime.datetime.utcnow()
-    now = now.date()
-
-    age = now - birth_date
-    print "{} years old".format(age.days / 365)
-
-
-
 
 def vocaburi(vocab_url):
-    """ Give the uri of a vocabulary 
+    """ Give the uri of a vocabulary
     """
 
     query = """
     PREFIX foaf: <http://xmlns.com/foaf/0.1/>
     SELECT * WHERE {
         <%s> foaf:primaryTopic ?uri .
-    } 
+    }
     """ % vocab_url
     sparql.setQuery(query)
     sparql.setReturnFormat(JSON)
@@ -122,30 +36,6 @@ def vocaburi(vocab_url):
         sys.exit(1)
     else:
         return results["results"]["bindings"][0]["uri"]["value"]
-
-
-def wikipedia2dbpedia(wikipedia_url):
-    """
-    Given a wikipedia URL returns the dbpedia resource
-    of that page.
-    """
-
-    query = """
-    PREFIX foaf: <http://xmlns.com/foaf/0.1/>
-    SELECT * WHERE {
-        ?url foaf:isPrimaryTopicOf <%s>.
-    }
-    """ % wikipedia_url
-
-    sparql.setQuery(query)
-    sparql.setReturnFormat(JSON)
-    results = sparql.query().convert()
-
-    if not results["results"]["bindings"]:
-        print "Snorql URL not found"
-        sys.exit(1)
-    else:
-        return results["results"]["bindings"][0]["url"]["value"]
 
 
 if __name__ == "__main__":
@@ -167,15 +57,22 @@ if __name__ == "__main__":
         "actors of Fight Club",
     ]
 
-    if "-d" in sys.argv:
-        quepy.set_loglevel("DEBUG")
-        sys.argv.remove("-d")
+    parser = argparse.ArgumentParser()
+    parser.add_argument('--q', action='store', type=str, required=True, default=None, help='Query to be processed')
+    parser.add_argument('--html', action='store_true', help='Output with HTML tags')
+    parser.add_argument('--d', action='store_true', help='Set log level to Debug')
+    args = parser.parse_args()
 
-    if len(sys.argv) > 1:
-        question = " ".join(sys.argv[1:])
-        #wikipedia2dbpedia
+    # print('q: '+args.q)
+    # print('html: '+str(args.html))
+    # print('d: '+str(args.d))
+    if args.d:
+        quepy.set_loglevel("DEBUG")
+
+    if len(args.q) > 1:
+        question = args.q
         if question.count("http"):
-            print vocaburi(sys.argv[1])
+            print vocaburi(question)
             sys.exit(0)
         else:
             questions = [question]
@@ -183,11 +80,8 @@ if __name__ == "__main__":
         questions = default_questions
 
     print_handlers = {
-        "define": print_define,
-        "enum": print_enum,
-        "time": print_time,
-        "literal": print_literal,
-        "age": print_age,
+        "define": printHandlers.print_define,
+        "literal": printHandlers.print_literal
     }
 
     for question in questions:
@@ -221,5 +115,5 @@ if __name__ == "__main__":
                 print "Sorry. I am not able to answer your question..."
                 continue
 
-        print_handlers[query_type](results, target, metadata)
+        print_handlers[query_type](results, target, args.html, metadata)
         print
