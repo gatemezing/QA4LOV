@@ -12,8 +12,7 @@ agents related regex
 from refo import Plus, Question
 from quepy.dsl import HasKeyword
 from quepy.parsing import Lemma, Lemmas, Pos, QuestionTemplate, Particle
-from dsl import  VersionOf, LabelOf, IsContributorOf, IsCreatorOf, IsVocab, HasVersion, HasLanguage, \
-     ReuseVocab, UseByDataset, HasURI, Name
+import dsl as dsl
 
 
 class Vocab(Particle):
@@ -21,7 +20,7 @@ class Vocab(Particle):
 
     def interpret(self, match):
         name = match.words.tokens
-        return IsVocab() + HasKeyword(name)
+        return dsl.IsVocab() + HasKeyword(name)
 
 
 class Person(Particle):
@@ -29,7 +28,7 @@ class Person(Particle):
 
     def interpret(self, match):
         name = match.words.tokens
-        return IsPerson() + HasKeyword(name)
+        return dsl.IsPerson() + HasKeyword(name)
 
 
 class VocabContributorsQuestion(QuestionTemplate):
@@ -48,8 +47,8 @@ class VocabContributorsQuestion(QuestionTemplate):
     regex = (regex1 | regex2 | regex3) + Question(Pos("."))
 
     def interpret(self, match):
-        member = IsContributorOf(match.vocab)
-        member_name = Name(member)
+        member = dsl.IsContributorOf(match.vocab)
+        member_name = dsl.Name(member)
         return member_name, "agent"
 
 
@@ -69,7 +68,7 @@ class VocabURIContributorsQuestion(QuestionTemplate):
     regex = (regex1 | regex2 | regex3) + Question(Pos("."))
 
     def interpret(self, match):
-        member = IsContributorOf(match.vocab)
+        member = dsl.IsContributorOf(match.vocab)
         return member, "url"
 
 
@@ -89,8 +88,8 @@ class VocabCreatorQuestion(QuestionTemplate):
     regex = (regex0 | regex1 | regex2 | regex3) + Question(Pos("."))
 
     def interpret(self, match):
-        creator = IsCreatorOf(match.vocab)
-        creator_name = Name(creator)
+        creator = dsl.IsCreatorOf(match.vocab)
+        creator_name = dsl.Name(creator)
         return creator_name, "agent"
 
 
@@ -109,8 +108,8 @@ class WhoPublishQuestion(QuestionTemplate):
     regex = (regex0 | regex1 | regex2 | regex3 | regex4) + Question(Pos("."))
 
     def interpret(self, match):
-        publisher = PublisherOf(match.vocabulary)
-        publisher_name = Name(publisher)
+        publisher = dsl.PublisherOf(match.vocabulary)
+        publisher_name = dsl.Name(publisher)
         #return publisher, "literal"
         return publisher_name, "agent"
 

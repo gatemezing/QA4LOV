@@ -12,9 +12,7 @@ vocabulary related regex
 from refo import Plus, Question
 from quepy.dsl import HasKeyword
 from quepy.parsing import Lemma, Lemmas, Pos, QuestionTemplate, Particle
-from dsl import IsPerson, LabelOf, DefinitionOf, BirthDateOf, IsVocab, ReleaseDateOf, \
-    TitleOf, PublisherOf, CreatorOf, ModifiedDateOf, IsTitleOf, IsHomePageOf, HasURI, \
-    HasCategory, Name
+import dsl as dsl
 
 
 class Vocabulary(Particle):
@@ -22,7 +20,7 @@ class Vocabulary(Particle):
 
     def interpret(self, match):
         name = match.words.tokens
-        return IsVocab() + HasKeyword(name)
+        return dsl.IsVocab() + HasKeyword(name)
 
 
 class WhatIsVocabQuestion(QuestionTemplate):
@@ -36,7 +34,7 @@ class WhatIsVocabQuestion(QuestionTemplate):
     regex = (regex1 | regex2) + Question(Pos("."))
 
     def interpret(self, match):
-        desc = DefinitionOf(match.vocabulary)
+        desc = dsl.DefinitionOf(match.vocabulary)
         return desc, "define"
 
 
@@ -47,7 +45,7 @@ class WhereIsHomePageQuestion(QuestionTemplate):
     regex = Lemmas("where to") + Lemma("find") + Vocabulary() + Lemma("documentation") + Question(Pos("."))
 
     def interpret(self, match):
-        home_uri = IsHomePageOf(match.vocabulary)
+        home_uri = dsl.IsHomePageOf(match.vocabulary)
         return home_uri, "url"
 
 
@@ -62,7 +60,7 @@ class ReleaseDateQuestion(QuestionTemplate):
     regex = (regex1 | regex2) + Question(Pos("."))
 
     def interpret(self, match):
-        release_date = ReleaseDateOf(match.vocabulary)
+        release_date = dsl.ReleaseDateOf(match.vocabulary)
         return release_date, "literal"
 
 
@@ -77,7 +75,7 @@ class ModifiedDateQuestion(QuestionTemplate):
     regex = (regex1 | regex2) + Question(Pos("."))
 
     def interpret(self, match):
-        modif_date = ModifiedDateOf(match.vocabulary)
+        modif_date = dsl.ModifiedDateOf(match.vocabulary)
         return modif_date, "literal"
 
 
@@ -88,7 +86,7 @@ class HowOldIsQuestion(QuestionTemplate):
     regex = Pos("WRB") + Lemma("old") + Lemma("be") + Vocabulary() + Question(Pos("."))
 
     def interpret(self, match):
-        birth_date = ReleaseDateOf(match.vocabulary)
+        birth_date = dsl.ReleaseDateOf(match.vocabulary)
         return birth_date, "age"
 
 
@@ -99,7 +97,7 @@ class WhatCategory(QuestionTemplate):
     regex = Lemma("what") + Lemma("be") + Lemma("the") + Lemma("category") + Pos("IN") + Vocabulary() + Question(Pos("."))
 
     def interpret(self, match):
-        category = HasCategory(match.vocabulary)
+        category = dsl.HasCategory(match.vocabulary)
         return category, "category"
 
 
@@ -115,7 +113,7 @@ class WhatIsTitleQuestion(QuestionTemplate):
     regex = (regex1 | regex2) + Question(Pos("."))
 
     def interpret(self, match):
-        title = TitleOf(match.vocabulary)
+        title = dsl.TitleOf(match.vocabulary)
         return title, "enum"
 
 
@@ -126,7 +124,7 @@ class WhatIsNamespaceQuestion(QuestionTemplate):
     regex = Lemma("what") + Lemma("be") + Lemmas("the namespace") + Pos("IN") + Vocabulary() + Question(Pos("."))
 
     def interpret(self, match):
-        uri = HasURI(match.vocabulary)
+        uri = dsl.HasURI(match.vocabulary)
         return uri, "url"
 
 
@@ -140,7 +138,7 @@ class HowManyVocabQuestion(QuestionTemplate):
     regex = regex1 + Question(Pos("."))
 
     def interpret(self, match):
-        number = ReuseVocab(match.vocab)
+        number = dsl.ReuseVocab(match.vocab)
         return number, "literal"
 
 
@@ -150,12 +148,12 @@ class HowManyDatasetQuestion(QuestionTemplate):
     Ex: "how many datasets use adms?"
     """
 
-    regex1 = Lemmas("how many") + Lemma("datasets") + Lemma("use") + Vocab()
+    regex1 = Lemmas("how many") + Lemma("datasets") + Lemma("use") + Vocabulary()
 
     regex = regex1 + Question(Pos("."))
 
     def interpret(self, match):
-        numberd = UseByDataset(match.vocab)
+        numberd = dsl.UseByDataset(match.vocab)
         return numberd, "literal"
 
 
@@ -173,7 +171,7 @@ class VocabVersionQuestion(QuestionTemplate):
     regex = (regex1 | regex2 | regex3) + Question(Pos("."))
 
     def interpret(self, match):
-        member = HasVersion(match.vocab)
+        member = dsl.HasVersion(match.vocab)
         return member, "url"
 
 
@@ -189,6 +187,6 @@ class VocabLanguageQuestion(QuestionTemplate):
     regex = (regex1 | regex2 | regex3) + Question(Pos("."))
 
     def interpret(self, match):
-        lang = HasLanguage(match.vocab)
-        lang_label = LabelOf(lang)
+        lang = dsl.HasLanguage(match.vocab)
+        lang_label = dsl.LabelOf(lang)
         return lang_label, "lang"
