@@ -24,12 +24,11 @@ def print_agent(results, target, isHtml, metadata=None):
     for result in results["results"]["bindings"]:
         literal = result[target]["value"]
         if metadata:
-            if isHtml:
-                print "<p><a href='http://lov.okfn.org/dataset/lov/agents/"+urllib.quote('literal', safe='')+"'>"+metadata.format(literal)+"</a></p>"
-            else:
-                print metadata.format(literal)
+            literal = metadata.format(literal)
+        if isHtml:
+            print "<p><a href='http://lov.okfn.org/dataset/lov/agents/"+urllib.quote('literal', safe='')+"'>"+literal+"</a></p>"
         else:
-            print ("<p>" if isHtml else "") + literal + ("</p>" if isHtml else "")
+            print literal
 
 
 def print_category(results, target, isHtml, metadata=None):
