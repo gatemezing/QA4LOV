@@ -92,8 +92,8 @@ if __name__ == "__main__":
 
     for question in questions:
         ## Here we print the question
-        print question
-        print "-" * 2* len(question)
+        #print question
+        #print "-" * 2* len(question)
     
         target, query, metadata = lov.get_query(question)
 

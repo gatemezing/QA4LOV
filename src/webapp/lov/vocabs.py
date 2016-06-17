@@ -56,8 +56,9 @@ class ReleaseDateQuestion(QuestionTemplate):
     """
     regex1 = Lemmas("when be") + Vocabulary() + Lemma("release")
     regex2 = Lemmas("when be") + Vocabulary() + Lemma("issue")
+    regex3 = Lemmas("when be") + Vocabulary() + Lemma("create")
 
-    regex = (regex1 | regex2) + Question(Pos("."))
+    regex = (regex1 | regex2 | regex3) + Question(Pos("."))
 
     def interpret(self, match):
         release_date = dsl.ReleaseDateOf(match.vocabulary)
