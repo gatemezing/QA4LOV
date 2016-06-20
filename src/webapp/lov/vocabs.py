@@ -148,7 +148,7 @@ class HowManyDatasetQuestion(QuestionTemplate):
     Ex: "how many datasets use adms?"
     """
 
-    regex1 = Lemmas("how many") + Lemma("datasets") + Lemma("use") + Vocabulary()
+    regex1 = Lemmas("how many") + Lemma("datasets") | Lemma("dataset") + Lemma("use") + Vocabulary()
 
     regex = regex1 + Question(Pos("."))
 
