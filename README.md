@@ -1,6 +1,5 @@
 # QA4LOV
 QA over Linked Open Vocabularies
 
-## paper in /paper 
+Demo at http://lov.okfn.org/dataset/lov/qa
 
-## code in /src
