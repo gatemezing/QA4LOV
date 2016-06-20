@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9) (preloaded format=pdflatex 2015.2.18)  10 MAY 2016 09:49
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9) (preloaded format=pdflatex 2015.2.18)  20 JUN 2016 10:39
 entering extended mode
 **qa4lov.tex
 (D:\research\QA4LOV\paper\eswc2016\qa4lov.tex
@@ -547,58 +547,49 @@ LaTeX Font Info:    Try loading font information for U+msb on input line 49.
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 ) [1
 
-{C:/Users/Ghislain/AppData/Local/MiKTeX/2.9/pdftex/config/pdftex.map}] [2]
-<qa4lov-archi.pdf, id=18, 414.07603pt x 284.60518pt>
+{C:/Users/Ghislain/AppData/Local/MiKTeX/2.9/pdftex/config/pdftex.map}]
+Underfull \vbox (badness 2744) has occurred while \output is active []
+
+ [2]
+<qa4lov-archi.pdf, id=17, 414.07603pt x 284.60518pt>
 File: qa4lov-archi.pdf Graphic file (type pdf)
  <use qa4lov-archi.pdf>
-Package pdftex.def Info: qa4lov-archi.pdf used on input line 154.
+Package pdftex.def Info: qa4lov-archi.pdf used on input line 156.
 (pdftex.def)             Requested size: 248.44753pt x 170.76442pt.
 
-[3] [4 <D:/research/QA4LOV/paper/eswc2016/qa4lov-archi.pdf>]
-Overfull \hbox (18.9595pt too wide) in paragraph at lines 199--200
-\OT1/cmr/m/n/10 them con-tain an hy-phen and the sys-tem can not gen-er-ate que
-ry: \OT1/cmtt/m/n/10 elseweb-modelling\OT1/cmr/m/n/10 ,
- []
-
-
-Overfull \hbox (11.40137pt too wide) in paragraph at lines 199--200
+Overfull \hbox (11.40137pt too wide) in paragraph at lines 202--204
 \OT1/cmtt/m/n/10 omn-lifecycle\OT1/cmr/m/n/10 , \OT1/cmtt/m/n/10 elseweb-data\O
 T1/cmr/m/n/10 , \OT1/cmtt/m/n/10 dbpedia-owl\OT1/cmr/m/n/10 , \OT1/cmtt/m/n/10 
 geo-deling\OT1/cmr/m/n/10 , \OT1/cmtt/m/n/10 sdmx-code\OT1/cmr/m/n/10 , \OT1/cm
 tt/m/n/10 wf-invoc\OT1/cmr/m/n/10 ,
  []
 
-(D:\research\QA4LOV\paper\eswc2016\qa4lov.bbl [5]
-Underfull \hbox (badness 4217) in paragraph at lines 26--31
-\OT1/cmr/m/n/9 Open Vo-cab-u-lar-ies.  OKFN, 2012.  $\OT1/cmtt/m/n/9 http : / /
- lov . okfn . org / dataset / lov /$
- []
-
-) [6] (D:\research\QA4LOV\paper\eswc2016\qa4lov.aux) ) 
+[3 <D:/research/QA4LOV/paper/eswc2016/qa4lov-archi.pdf>]
+(D:\research\QA4LOV\paper\eswc2016\qa4lov.bbl) [4]
+(D:\research\QA4LOV\paper\eswc2016\qa4lov.aux) ) 
 Here is how much of TeX's memory you used:
- 4040 strings out of 493921
- 53061 string characters out of 3144867
- 118508 words of memory out of 3000000
- 7271 multiletter control sequences out of 15000+200000
+ 4038 strings out of 493921
+ 53033 string characters out of 3144867
+ 117497 words of memory out of 3000000
+ 7269 multiletter control sequences out of 15000+200000
  11652 words of font info for 45 fonts, out of 3000000 for 9000
  841 hyphenation exceptions out of 8191
- 29i,9n,32p,971b,299s stack positions out of 5000i,500n,10000p,200000b,50000s
-<C:/Program Files (x86)/M
-iKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx10.pfb><C:/Program Files (x86)/MiK
-TeX 2.9/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/Program Files (x86)/MiKTe
-X 2.9/fonts/type1/public/amsfonts/cm/cmbx9.pfb><C:/Program Files (x86)/MiKTeX 2
-.9/fonts/type1/public/amsfonts/cm/cmbxti10.pfb><C:/Program Files (x86)/MiKTeX 2
-.9/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Program Files (x86)/MiKTeX 2.9/
-fonts/type1/public/amsfonts/cm/cmr6.pfb><C:/Program Files (x86)/MiKTeX 2.9/font
-s/type1/public/amsfonts/cm/cmr7.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/ty
-pe1/public/amsfonts/cm/cmr9.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/
-public/amsfonts/cm/cmti10.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/pu
-blic/amsfonts/cm/cmti9.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/publi
-c/amsfonts/cm/cmtt10.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/
-amsfonts/cm/cmtt9.pfb>
-Output written on qa4lov.pdf (6 pages, 214341 bytes).
+ 29i,9n,32p,971b,289s stack positions out of 5000i,500n,10000p,200000b,50000s
+<C:/Program Files (x86)/MiKTeX 
+2.9/fonts/type1/public/amsfonts/cm/cmbx10.pfb><C:/Program Files (x86)/MiKTeX 2.
+9/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/Program Files (x86)/MiKTeX 2.9/
+fonts/type1/public/amsfonts/cm/cmbx9.pfb><C:/Program Files (x86)/MiKTeX 2.9/fon
+ts/type1/public/amsfonts/cm/cmbxti10.pfb><C:/Program Files (x86)/MiKTeX 2.9/fon
+ts/type1/public/amsfonts/cm/cmr10.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/
+type1/public/amsfonts/cm/cmr6.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type
+1/public/amsfonts/cm/cmr7.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/pu
+blic/amsfonts/cm/cmr9.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public
+/amsfonts/cm/cmti9.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/am
+sfonts/cm/cmtt10.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsf
+onts/cm/cmtt9.pfb>
+Output written on qa4lov.pdf (4 pages, 191902 bytes).
 PDF statistics:
- 109 PDF objects out of 1000 (max. 8388607)
+ 99 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
  6 words of extra memory for PDF output out of 10000 (max. 10000000)
 

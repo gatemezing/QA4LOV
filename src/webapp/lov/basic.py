@@ -1,7 +1,8 @@
 # coding: utf-8
 
 """
-Basic queries for lov quepy.
+Basic queries for lov quepy. 
+
 """
 
 from dsl import *

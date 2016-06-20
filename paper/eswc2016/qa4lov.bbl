@@ -22,11 +22,4 @@ P.-Y. Vandenbussche, G.~A. Atemezing, M.~Poveda-Villal{\'o}nc, and B.~Vatant.
 \newblock {\em Semantic Web Journal}, 2015.
 \newblock \url{http://www.semantic-web-journal.net/system/files/swj974.pdf}.
 
-\bibitem{pybernard12}
-P.-Y. Vandenbussche and B.~Vatant.
-\newblock {Metadata Recommendations For Linked Open Vocabularies}.
-\newblock OKFN, 2012.
-\newblock
-  \url{http://lov.okfn.org/dataset/lov/Recommendations_Vocabulary_Design.pdf}.
-
 \end{thebibliography}
