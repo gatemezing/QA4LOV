@@ -1,6 +1,6 @@
 # QA4LOV
 QA over Linked Open Vocabularies
 
-# paper in /paper 
+## paper in /paper 
 
-# code in /src
+## code in /src
