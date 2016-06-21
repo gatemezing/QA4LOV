@@ -78,28 +78,12 @@ The recent years have seen the adoption of semantic web in many domains, generat
 However, users need to have a minimal knowledge of SPARQL language and RDF skills to query  RDF datasets. It is one barrier that is overcome by Question Answering (QA) systems, which directly take as input questions in natural language. The need for more advanced tools and QA systems that operate over large repositories of Linked Data has also been the motivation for the QALD Question Answering over Linked Data (QALD) series of workshops \cite{lopezetal2013}. 
 %Started in 2011, QALD challenges offer a test sets questions whose answers can be found in the DBpedia and MusicBrainz, with more complex questions added each year. However, there is not yet a specific set of questions specific to retrieve metadata at schema level.
  
-Vocabulary catalogues and semantic search engines are special datasets as classes and properties are used to model and generate datasets available in the Linked Data space. Ontologies are an important part in the semantic web layer to build full interoperable datasets. Most vocabulary catalogues provide terms search and APIs to access their datasets. LOV provides five types of search methods: metadata search, ontology search, APIs access, dump file in RDF and SPARQL endpoint access \cite{vandenbusschelov}.
+Vocabulary catalogues are special datasets where classes and properties are used to model and generate datasets available in the Linked Data space. Most vocabulary catalogues provide terms search and APIs to access their datasets. LOV provides five types of search methods: metadata search, ontology search, APIs access, dump file in RDF and SPARQL endpoint access \cite{vandenbusschelov}.
 
 
-This paper presents a prototype for a vocabulary backed question answering system that can transform natural language questions into SPARQL queries, thus giving the end users access to the information stored in vocabulary repositories. The paper is structured as follows: Section \ref{sec:questions} describes the system, followed by the set of questions in Section \ref{sec:system}. An evaluation is presented in Section \ref{sec:evaluation} and a short conclusion and future work in Section \ref{sec:conclusion}.  
+This paper presents a prototype for a vocabulary backed question answering system that can transform natural language questions into SPARQL queries, thus giving the end users access to the information stored in vocabulary repositories. The paper is structured as follows: Section \ref{sec:system} describes the system, followed by the set of questions in Section \ref{sec:questions}. An evaluation is presented in Section \ref{sec:evaluation} and a short conclusion and future work in Section \ref{sec:conclusion}.  
 
-
-%Consider the following question in natural language \textit{``What is dcterms?''}. The answer in English corresponds to the following SPARQL query in the LOV endpoint:\footnote{\url{http://lov.okfn.org/dataset/lov/sparql}}
-
-%\begin{verbatim}
-%PREFIX vann:<http://purl.org/vocab/vann/>
-%PREFIX voaf:<http://purl.org/vocommons/voaf#>
-%PREFIX dcterms: <http://purl.org/dc/terms/>
-
-%SELECT DISTINCT ?x1  {
-% 	GRAPH <http://lov.okfn.org/dataset/lov>{
-% 	 	?x0 a voaf:Vocabulary.
-%  ?x0 vann:preferredNamespacePrefix "dcterms".
-%  ?x0 dcterms:description ?x1.
- 	 
-%}}
-%\end{verbatim}
-
+\vspace{1mm}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%  2. System Description  %%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -107,13 +91,13 @@ This paper presents a prototype for a vocabulary backed question answering syste
 \section{System Description}
 \label{sec:system}
 
-The system receives as input a natural language question formulated in English and outputs the query that will retrieve the answer to the question from the LOV catalogue. The architecture of the system is illustrated in Fig.\ref{fig:q4lovarchi} and a screenshot of the live demo in Fig. \ref{fig:qa-screenshot}. The system is available at \url{http://lov.okfn.org/dataset/lov/qa}.
+The system receives as input a question formulated in English and outputs the query that will retrieve the answer to the question from the LOV catalogue. The architecture of the system is illustrated in Fig. \ref{fig:q4lovarchi} and a screenshot of the live demo in Fig. \ref{fig:qa-screenshot}. The system is available at \url{http://lov.okfn.org/dataset/lov/qa}.
 
-\begin{figure}
+\begin{figure}[ht!b]
 \centering
 \begin{subfigure}
   \centering
-  \includegraphics[width=.4\linewidth]{img/qa4lov-archi.pdf}
+  \includegraphics[width=.4\linewidth]{img/qa4lov-archi.png}
   \caption{System architecture}
   \label{fig:q4lovarchi}
 \end{subfigure}%
@@ -135,11 +119,11 @@ The system receives as input a natural language question formulated in English a
 %\includegraphics[scale=.6]{qa4lov-archi.pdf}
 %\label{fig:q4lovarchi}
 %\end{figure}
-\todo{make this figure way shorter and add a screenshot}
+%\todo{make this figure way shorter and add a screenshot}
 
 The implementation uses the Quepy tool from Machinalis \footnote{\url{https://github.com/machinalis/quepy/}}. The POS tagset used by Quepy is the Penn Tagset \cite{marcus1993building}. First, regular expressions are defined to match the natural language questions and transform them into an abstract semantic representation. Then, specific templates are defined for the system to handle users' questions. To handle regular expressions, Quepy uses the \texttt{refo} library\footnote{\url{https://github.com/machinalis/refo}} which work with regular expressions as objects. 
 
-A vocabulary is defined by a fixed relation \texttt{voaf:Vocabulary}\footnote{All the prefixes are the ones used at \url{http://lov.okfn.org/dataset/lov/vocabs}} and a POS associated to a \texttt{vann:preferredNamespacePrefix}. LOV uses a unique prefix to identify namespaces, which is a string from length 2 to length 17, although the recommendation for publishers is to use a prefix with less than 10 characters.
+A vocabulary is defined by a fixed relation \texttt{voaf:Vocabulary} and a POS associated to a \texttt{vann:preferredNamespacePrefix}. LOV uses a unique prefix to identify namespaces, which is a string from length 2 to length 17, although the recommendation for publishers is to use a prefix with less than 10 characters.
 %\cite{pybernard12}.  
 
 The syntactic processor is based on regular expressions using POS terms. As a vocabulary is identified by its prefix, we use  the following syntactic patterns: NN, NNS, FW, DT, JJ and VBN. Each question from Q1 to Q14 is associated to a unique template. After, when a prefix is recognized, the semantic interpreter uses fixed relations with the English tag, which are properties in RDF triple pattern. The code below show a regex for the contributors of a vocabulary 
@@ -178,7 +162,7 @@ regex1 = Pos("WP") + Lemma("be") + Pos("DT") + Lemma("contributor") + \
 
 
 
-
+\vspace{2mm}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%  3. Questions  %%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -228,7 +212,7 @@ Additionally, users could be interested in other interesting facts, such as the 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%  4.System evaluation  %%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
+\vspace{1mm}
 \section{System Evaluation}
 \label{sec:evaluation}
 
@@ -243,22 +227,15 @@ All the questions which generated SPARQL query gives satisfactory results. The m
 %\todo{complete type of questions covered}\\
 
 
-%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%  4. Related work  %%%
-%%%%%%%%%%%%%%%%%%%%%%%%%
-
-%\section{Related Work}\label{sec:soa}
-
-
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%  5. Conclusion and Future Work  %%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
+\vspace{1mm}
 \section{Conclusion and Future Work}
 \label{sec:conclusion}
 %\input{conclusion}
 
-In this paper, we have presented a prototype system for answering a set of questions in natural language backed by a vocabulary catalogue. The questions are targeted to retrieve metadata information in vocabularies. Accessing LOV dataset by this system will hugely help lay users without SPARQL skills to interact more with the catalogue, and improve also the quality of the metadata by ontology publishers.  
+In this paper, we have presented a prototype system for answering a set of questions in natural language backed by a vocabulary catalogue. Accessing LOV dataset by this system will hugely help lay users without SPARQL skills to interact more with the catalogue, and improve also the quality of the metadata by ontology publishers.  
 %\todo{may be emphasize on the impact for end users...}
 The implementation uses the LOV dataset in RDF and the Quepy tool. The first results show that the system handles 92,99\% of the metadata of vocabularies in the LOV catalogue.
 We plan to extend the types of queries to more complex ones. Moreover, we can use various semantic relationships in LOV to do query expansion by using for instance sub-properties. 
