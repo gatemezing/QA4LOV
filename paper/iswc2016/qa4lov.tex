@@ -107,13 +107,13 @@ This paper presents a prototype for a vocabulary backed question answering syste
 \section{System Description}
 \label{sec:system}
 
-The system receives as input a natural language question formulated in English and outputs the query that will retrieve the answer to the question from the LOV catalogue. The architecture of the system is illustrated in Fig.\ref{fig:q4lovarchi}. The system is available at \url{http://lov.okfn.org/dataset/lov/qa}.
+The system receives as input a natural language question formulated in English and outputs the query that will retrieve the answer to the question from the LOV catalogue. The architecture of the system is illustrated in Fig.\ref{fig:q4lovarchi} and a screenshot of the live demo in Fig. \ref{fig:qa-screenshot}. The system is available at \url{http://lov.okfn.org/dataset/lov/qa}.
 
 \begin{figure}
 \centering
 \begin{subfigure}
   \centering
-  \includegraphics[width=.3\linewidth]{img/qa4lov-archi.pdf}
+  \includegraphics[width=.4\linewidth]{img/qa4lov-archi.pdf}
   \caption{System architecture}
   \label{fig:q4lovarchi}
 \end{subfigure}%
@@ -121,7 +121,7 @@ The system receives as input a natural language question formulated in English a
   \centering
   \includegraphics[width=.5\linewidth]{img/qa-screenshot.png}
   \caption{A screenshot showing the system answering to the contributors of adms}
-  \label{fig:sub2}
+  \label{fig:qa-screenshot}
 \end{subfigure}
 %\caption{A figure with two subfigures}
 \label{fig:test}
@@ -144,7 +144,7 @@ A vocabulary is defined by a fixed relation \texttt{voaf:Vocabulary}\footnote{Al
 
 The syntactic processor is based on regular expressions using POS terms. As a vocabulary is identified by its prefix, we use  the following syntactic patterns: NN, NNS, FW, DT, JJ and VBN. Each question from Q1 to Q14 is associated to a unique template. After, when a prefix is recognized, the semantic interpreter uses fixed relations with the English tag, which are properties in RDF triple pattern. The code below show a regex for the contributors of a vocabulary 
 \begin{verbatim}
-regex3 = Pos("WP") + Lemma("be") + Pos("DT") + Lemma("contributor") + \
+regex1 = Pos("WP") + Lemma("be") + Pos("DT") + Lemma("contributor") + \
         Pos("IN") + Vocabulary()
 \end{verbatim}
 
@@ -197,7 +197,8 @@ LOV is a highly curated observatory of the semantic vocabularies ecosystem, with
 %\item The different languages in which the vocabulary is available.
 %\end{itemize}
 
-Additionally, users could be interested in other interesting facts, such as the number of versions, the number of datasets  using the vocabulary, the number of external vocabularies reusing the vocabulary and the category to which belong the vocabulary. A first set of 14 questions in natural language can be handle by the prototype, covering different type of metadata information available in a vocabulary. Table \ref{tab:qtable} shows the list of questions, where in the column ``Template'', [be] can be either the present or the past form of the verb, and [vocab] is the preferred prefix of the vocabulary.\todo{Here we have the feeling only be and vocab can change whereas in reality we use lemma or other words...}    
+Additionally, users could be interested in other interesting facts, such as the number of versions, the number of datasets  using the vocabulary, the number of external vocabularies reusing the vocabulary and the category to which belong the vocabulary. A first set of 14 questions in natural language can be handle by the prototype, covering different type of metadata information available in a vocabulary. Table \ref{tab:qtable} shows the list of questions, where in the column ``Template'', [be] can be either the present or the past form of the verb, and [vocab] is the preferred prefix of the vocabulary. The regex uses lemmas to combine different types of the questions accordingly.
+%\todo{Here we have the feeling only be and vocab can change whereas in reality we use lemma or other words...}    
 
 \begin{table*}
 \centering
