@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9) (preloaded format=pdflatex 2015.2.18)  21 JUN 2016 12:08
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9) (preloaded format=pdflatex 2015.2.18)  21 JUN 2016 12:11
 entering extended mode
 **qa4lov.tex
 (D:\research\QA4LOV\paper\iswc2016\qa4lov.tex
@@ -546,19 +546,17 @@ LaTeX Font Info:    Try loading font information for U+msb on input line 49.
 ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\amsfonts\umsb.fd"
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 58.
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 96.
 
 ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\base\omscmr.fd"
 File: omscmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
 )
-LaTeX Font Info:    Font shape `OMS/cmr/bx/n' in size <9> not available
-(Font)              Font shape `OMS/cmsy/b/n' tried instead on input line 58.
 LaTeX Font Info:    Font shape `OMS/cmr/bx/n' in size <10> not available
 (Font)              Font shape `OMS/cmsy/b/n' tried instead on input line 96.
  [1
 
 {C:/Users/Ghislain/AppData/Local/MiKTeX/2.9/pdftex/config/pdftex.map}] [2]
-<qa4lov-archi.pdf, id=19, 414.07603pt x 284.60518pt>
+<qa4lov-archi.pdf, id=18, 414.07603pt x 284.60518pt>
 File: qa4lov-archi.pdf Graphic file (type pdf)
  <use qa4lov-archi.pdf>
 Package pdftex.def Info: qa4lov-archi.pdf used on input line 156.
@@ -568,30 +566,29 @@ Package pdftex.def Info: qa4lov-archi.pdf used on input line 156.
 (D:\research\QA4LOV\paper\iswc2016\qa4lov.bbl) [4]
 (D:\research\QA4LOV\paper\iswc2016\qa4lov.aux) ) 
 Here is how much of TeX's memory you used:
- 4060 strings out of 493921
- 53400 string characters out of 3144867
+ 4057 strings out of 493921
+ 53366 string characters out of 3144867
  117494 words of memory out of 3000000
- 7286 multiletter control sequences out of 15000+200000
- 12161 words of font info for 47 fonts, out of 3000000 for 9000
+ 7284 multiletter control sequences out of 15000+200000
+ 11907 words of font info for 46 fonts, out of 3000000 for 9000
  841 hyphenation exceptions out of 8191
  29i,9n,32p,752b,289s stack positions out of 5000i,500n,10000p,200000b,50000s
 <C:/Program Files (x86)/MiKTeX 
 2.9/fonts/type1/public/amsfonts/cm/cmbsy10.pfb><C:/Program Files (x86)/MiKTeX 2
-.9/fonts/type1/public/amsfonts/cmextra/cmbsy9.pfb><C:/Program Files (x86)/MiKTe
-X 2.9/fonts/type1/public/amsfonts/cm/cmbx10.pfb><C:/Program Files (x86)/MiKTeX 
-2.9/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/Program Files (x86)/MiKTeX 2.
-9/fonts/type1/public/amsfonts/cm/cmbx9.pfb><C:/Program Files (x86)/MiKTeX 2.9/f
-onts/type1/public/amsfonts/cm/cmbxti10.pfb><C:/Program Files (x86)/MiKTeX 2.9/f
-onts/type1/public/amsfonts/cm/cmr10.pfb><C:/Program Files (x86)/MiKTeX 2.9/font
-s/type1/public/amsfonts/cm/cmr6.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/ty
-pe1/public/amsfonts/cm/cmr7.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/
-public/amsfonts/cm/cmr9.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/publ
-ic/amsfonts/cm/cmti9.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/
-amsfonts/cm/cmtt10.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/am
-sfonts/cm/cmtt9.pfb>
-Output written on qa4lov.pdf (4 pages, 204592 bytes).
+.9/fonts/type1/public/amsfonts/cm/cmbx10.pfb><C:/Program Files (x86)/MiKTeX 2.9
+/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/Program Files (x86)/MiKTeX 2.9/f
+onts/type1/public/amsfonts/cm/cmbx9.pfb><C:/Program Files (x86)/MiKTeX 2.9/font
+s/type1/public/amsfonts/cm/cmbxti10.pfb><C:/Program Files (x86)/MiKTeX 2.9/font
+s/type1/public/amsfonts/cm/cmr10.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/t
+ype1/public/amsfonts/cm/cmr6.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1
+/public/amsfonts/cm/cmr7.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/pub
+lic/amsfonts/cm/cmr9.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/
+amsfonts/cm/cmti9.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/ams
+fonts/cm/cmtt10.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfo
+nts/cm/cmtt9.pfb>
+Output written on qa4lov.pdf (4 pages, 201003 bytes).
 PDF statistics:
- 107 PDF objects out of 1000 (max. 8388607)
+ 103 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
  6 words of extra memory for PDF output out of 10000 (max. 10000000)
 
