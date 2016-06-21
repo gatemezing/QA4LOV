@@ -65,7 +65,7 @@ This paper proposed a first implementation of Query Answering system (QA) applie
 
 \end{abstract}
 
-\keywords{Question Answering, Vocabulary Catalogue, metadata, user experience}
+\keywords{Question Answering, Vocabulary Catalogue, data usage, user experience}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%
@@ -79,6 +79,11 @@ However, users need to have a minimal knowledge of SPARQL language and RDF skill
 %Started in 2011, QALD challenges offer a test sets questions whose answers can be found in the DBpedia and MusicBrainz, with more complex questions added each year. However, there is not yet a specific set of questions specific to retrieve metadata at schema level.
  
 Vocabulary catalogues and semantic search engines are special datasets as classes and properties are used to model and generate datasets available in the Linked Data space. Ontologies are an important part in the semantic web layer to build full interoperable datasets. Most vocabulary catalogues provide terms search and APIs to access their datasets. LOV provides five types of search methods: metadata search, ontology search, APIs access, dump file in RDF and SPARQL endpoint access \cite{vandenbusschelov}.
+
+
+This paper presents a prototype for a vocabulary backed question answering system that can transform natural language questions into SPARQL queries, thus giving the end users access to the information stored in vocabulary repositories. The paper is structured as follows: Section \ref{sec:questions} describes the system, followed by the set of questions in Section \ref{sec:system}. An evaluation is presented in Section \ref{sec:evaluation} and a short conclusion and future work in Section \ref{sec:conclusion}.  
+
+
 %Consider the following question in natural language \textit{``What is dcterms?''}. The answer in English corresponds to the following SPARQL query in the LOV endpoint:\footnote{\url{http://lov.okfn.org/dataset/lov/sparql}}
 
 %\begin{verbatim}
@@ -95,12 +100,87 @@ Vocabulary catalogues and semantic search engines are special datasets as classe
 %}}
 %\end{verbatim}
 
-This paper presents a prototype for a vocabulary backed question answering system that can transform natural language questions into SPARQL queries, thus giving the end users access to the information stored in vocabulary repositories. The paper is structured as follows: Section \ref{sec:questions} describes the set of questions, followed by a system description in Section \ref{sec:system}\todo{May be more flowing if presenting the system first and then the type of questions supported?}. An evaluation is presented in Section \ref{sec:evaluation} and a short conclusion and future work in Section \ref{sec:conclusion}.  
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%  2. System Description  %%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{System Description}
+\label{sec:system}
+
+The system receives as input a natural language question formulated in English and outputs the query that will retrieve the answer to the question from the LOV catalogue. The architecture of the system is illustrated in Fig.\ref{fig:q4lovarchi}. The system is available at \url{http://lov.okfn.org/dataset/lov/qa}.
+
+\begin{figure}
+\centering
+\begin{subfigure}
+  \centering
+  \includegraphics[width=.3\linewidth]{img/qa4lov-archi.pdf}
+  \caption{System architecture}
+  \label{fig:q4lovarchi}
+\end{subfigure}%
+\begin{subfigure}
+  \centering
+  \includegraphics[width=.5\linewidth]{img/qa-screenshot.png}
+  \caption{A screenshot showing the system answering to the contributors of adms}
+  \label{fig:sub2}
+\end{subfigure}
+%\caption{A figure with two subfigures}
+\label{fig:test}
+\end{figure}
+
+
+
+%\begin{figure}[ht!b]
+%\centering
+%\caption{Architecture of the system.}
+%\includegraphics[scale=.6]{qa4lov-archi.pdf}
+%\label{fig:q4lovarchi}
+%\end{figure}
+\todo{make this figure way shorter and add a screenshot}
+
+The implementation uses the Quepy tool from Machinalis \footnote{\url{https://github.com/machinalis/quepy/}}. The POS tagset used by Quepy is the Penn Tagset \cite{marcus1993building}. First, regular expressions are defined to match the natural language questions and transform them into an abstract semantic representation. Then, specific templates are defined for the system to handle users' questions. To handle regular expressions, Quepy uses the \texttt{refo} library\footnote{\url{https://github.com/machinalis/refo}} which work with regular expressions as objects. 
+
+A vocabulary is defined by a fixed relation \texttt{voaf:Vocabulary}\footnote{All the prefixes are the ones used at \url{http://lov.okfn.org/dataset/lov/vocabs}} and a POS associated to a \texttt{vann:preferredNamespacePrefix}. LOV uses a unique prefix to identify namespaces, which is a string from length 2 to length 17, although the recommendation for publishers is to use a prefix with less than 10 characters.
+%\cite{pybernard12}.  
+
+The syntactic processor is based on regular expressions using POS terms. As a vocabulary is identified by its prefix, we use  the following syntactic patterns: NN, NNS, FW, DT, JJ and VBN. Each question from Q1 to Q14 is associated to a unique template. After, when a prefix is recognized, the semantic interpreter uses fixed relations with the English tag, which are properties in RDF triple pattern. The code below show a regex for the contributors of a vocabulary 
+\begin{verbatim}
+regex3 = Pos("WP") + Lemma("be") + Pos("DT") + Lemma("contributor") + \
+        Pos("IN") + Vocabulary()
+\end{verbatim}
+
+%\todo{provide an example of regex?}
+%Table \ref{tab:propTable} presents the different fixed relations currently used in the system to cover the set of the 14 questions.
+
+%\begin{table}
+%\centering
+%\caption{Relationship between Questions and Properties used to generate the SPARQL query from natural language}
+%\label{tab:propTable}
+%\begin{tabular}{|c|l|} \hline
+%\textbf{Question ID} & \textbf{Property} \\ \hline
+%\texttt{Q1} & \texttt{dcterms:description}  \\ \hline
+%\texttt{Q2} & \texttt{dcterms:publisher}  \\ \hline 
+%\texttt{Q3} & \texttt{dcterms:issued}  \\ \hline
+%\texttt{Q4} & \texttt{dcterms:issued}  \\ \hline
+%\texttt{Q5} & \texttt{dcterms:contributor}  \\ \hline
+%\texttt{Q6} & \texttt{dcterms:modified}  \\ \hline
+%\texttt{Q7} & \texttt{dcat:distribution}  \\ \hline
+%\texttt{Q8} & \texttt{dcterms:language}  \\ \hline
+%\texttt{Q9} & \texttt{foaf:homepage}  \\ \hline
+%\texttt{Q10} & \texttt{voaf:reusedByVocabularies} \\ \hline
+%\texttt{Q11} & \texttt{voaf:reusedByDatasets} \\ \hline
+%\texttt{Q12} & \texttt{vann:preferredNamespaceUri} \\ \hline
+%\texttt{Q13} & \texttt{dcterms:title} \\ \hline
+%\texttt{Q14} & \texttt{dcat:keyword} \\ \hline
+
+%\end{tabular}
+%\end{table}
+
+
 
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%  2. Questions  %%%
+%%%  3. Questions  %%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Types of Questions}
 \label{sec:questions}
@@ -143,80 +223,9 @@ Additionally, users could be interested in other interesting facts, such as the 
 \end{table*}
 
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%  3. System Description  %%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\section{System Description}
-\label{sec:system}
-
-The system receives as input a natural language question formulated in English and outputs the query that will retrieve the answer to the question from the LOV catalogue. The architecture of the system is illustrated in Fig.\ref{fig:q4lovarchi}. The system is available at \url{http://lov.okfn.org/dataset/lov/qa}.
-
-\begin{figure}
-\centering
-\begin{subfigure}
-  \centering
-  \includegraphics[width=.4\linewidth]{img/qa4lov-archi.pdf}
-  \caption{A subfigure}
-  \label{fig:sub1}
-\end{subfigure}%
-\begin{subfigure}
-  \centering
-  \includegraphics[width=.4\linewidth]{img/qa-screenshot.png}
-  \caption{A subfigure}
-  \label{fig:sub2}
-\end{subfigure}
-\caption{A figure with two subfigures}
-\label{fig:test}
-\end{figure}
-
-
-
-
-%\begin{figure}[ht!b]
-%\centering
-%\caption{Architecture of the system.}
-%\includegraphics[scale=.6]{qa4lov-archi.pdf}
-%\label{fig:q4lovarchi}
-%\end{figure}
-\todo{make this figure way shorter and add a screenshot}
-
-The implementation uses the Quepy tool from Machinalis \footnote{\url{https://github.com/machinalis/quepy/}}. The POS tagset used by Quepy is the Penn Tagset \cite{marcus1993building}. First, regular expressions are defined to match the natural language questions and transform them into an abstract semantic representation. Then, specific templates are defined for the system to handle users' questions. To handle regular expressions, Quepy uses the \texttt{refo} library\footnote{\url{https://github.com/machinalis/refo}} which work with regular expressions as objects. 
-
-A vocabulary is defined by a fixed relation \texttt{voaf:Vocabulary}\footnote{All the prefixes are the ones used at \url{http://lov.okfn.org/dataset/lov/vocabs}} and a POS associated to a \texttt{vann:preferredNamespacePrefix}. LOV uses a unique prefix to identify namespaces, which is a string from length 2 to length 17, although the recommendation for publishers is to use a prefix with less than 10 characters.
-%\cite{pybernard12}.  
-
-The syntactic processor is based on regular expressions using POS terms. As a vocabulary is identified by its prefix, we use  the following syntactic patterns: NN, NNS, FW, DT, JJ and VBN. Each question from Q1 to Q14 is associated to a unique template. After, when a prefix is recognized, the semantic interpreter uses fixed relations with the English tag, which are properties in RDF triple pattern. \todo{provide an example of regex?}
-%Table \ref{tab:propTable} presents the different fixed relations currently used in the system to cover the set of the 14 questions.
-
-%\begin{table}
-%\centering
-%\caption{Relationship between Questions and Properties used to generate the SPARQL query from natural language}
-%\label{tab:propTable}
-%\begin{tabular}{|c|l|} \hline
-%\textbf{Question ID} & \textbf{Property} \\ \hline
-%\texttt{Q1} & \texttt{dcterms:description}  \\ \hline
-%\texttt{Q2} & \texttt{dcterms:publisher}  \\ \hline 
-%\texttt{Q3} & \texttt{dcterms:issued}  \\ \hline
-%\texttt{Q4} & \texttt{dcterms:issued}  \\ \hline
-%\texttt{Q5} & \texttt{dcterms:contributor}  \\ \hline
-%\texttt{Q6} & \texttt{dcterms:modified}  \\ \hline
-%\texttt{Q7} & \texttt{dcat:distribution}  \\ \hline
-%\texttt{Q8} & \texttt{dcterms:language}  \\ \hline
-%\texttt{Q9} & \texttt{foaf:homepage}  \\ \hline
-%\texttt{Q10} & \texttt{voaf:reusedByVocabularies} \\ \hline
-%\texttt{Q11} & \texttt{voaf:reusedByDatasets} \\ \hline
-%\texttt{Q12} & \texttt{vann:preferredNamespaceUri} \\ \hline
-%\texttt{Q13} & \texttt{dcterms:title} \\ \hline
-%\texttt{Q14} & \texttt{dcat:keyword} \\ \hline
-
-%\end{tabular}
-%\end{table}
-
-
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%  3.System evaluation  %%%
+%%%  4.System evaluation  %%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \section{System Evaluation}
@@ -248,7 +257,8 @@ All the questions which generated SPARQL query gives satisfactory results. The m
 \label{sec:conclusion}
 %\input{conclusion}
 
-In this paper, we have presented a prototype system for answering a set of questions in natural language backed by a vocabulary catalogue. The questions are targeted to retrieve metadata information in vocabularies. \todo{may be emphasise on the impact for end users...}
+In this paper, we have presented a prototype system for answering a set of questions in natural language backed by a vocabulary catalogue. The questions are targeted to retrieve metadata information in vocabularies. Accessing LOV dataset by this system will hugely help lay users without SPARQL skills to interact more with the catalogue, and improve also the quality of the metadata by ontology publishers.  
+%\todo{may be emphasize on the impact for end users...}
 The implementation uses the LOV dataset in RDF and the Quepy tool. The first results show that the system handles 92,99\% of the metadata of vocabularies in the LOV catalogue.
 We plan to extend the types of queries to more complex ones. Moreover, we can use various semantic relationships in LOV to do query expansion by using for instance sub-properties. 
 %Also, we intend to align the set of questions to the QALD challenges to make the system comparable to existing Question Answering systems.  
@@ -259,8 +269,8 @@ We plan to extend the types of queries to more complex ones. Moreover, we can us
 %%%  Acknowledgments  %%%
 %%%%%%%%%%%%%%%%%%%%%%%%%
 %\vspace{1mm}
-\paragraph{\textbf{Acknowledgments}} %\label{sec:acknowledgments}
-Thanks to the LOV team and curators for maintaining the LOV catalogue, and Machinalis for the open source Quepy tool. 
+%\paragraph{\textbf{Acknowledgments}} %\label{sec:acknowledgments}
+%Thanks to the LOV team and curators for maintaining the LOV catalogue, and Machinalis for the open source Quepy tool. 
 
 
 \bibliographystyle{abbrv}
