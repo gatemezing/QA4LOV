@@ -201,7 +201,7 @@ The syntactic processor is based on regular expressions using POS terms. As a vo
 
 %This first set of questions are not found in the QALD challenges, where answers had to be found either in DBpedia or in a federated dataset such as Yago2 and MusicBrainz. In terms of complexity, the test questions are either simple questions related to retrieve metadata information. 
 The system allows users to interact with the LOV catalogue through the answers generated. Depending on the types of the results (e.g., agents, versions, categories), the system allows users to further explore the dataset with more interactions.
-All the questions which generated SPARQL query gives satisfactory results. The most challenging issue is to determine the most suitable POS that cover all the vocabulary prefixes. For example, out of 528\footnote{This number corresponds to the total number of vocabularies inserted in LOV as of January, 8th 2016.} vocabularies in LOV, 13 of them contain an hyphen and the system can not generate query\todo{may be not necessary to list them all}: \texttt{elseweb-modelling}, \texttt{sdmx-dimension}, \texttt{omn-federation}, \\ \texttt{omn-lifecycle}, \texttt{elseweb-data}, \texttt{dbpedia-owl}, \texttt{geo-deling}, \texttt{sdmx-code}, \texttt{wf-invoc}, \texttt{iso-thes}, \texttt{eac-cpf}, \texttt{p-plan} and \texttt{ma-ont}. Moreover, 21 prefixes contain a number (e.g., \texttt{g50k}) and 3 special cases (\texttt{homeActivity}, \texttt{LiMo}, and \texttt{juso.kr})and are not currently covered by the system. Currently, the system handles 92,99\% of the prefixes in LOV.
+All the questions which generated SPARQL query gives satisfactory results. The most challenging issue is to determine the most suitable POS that cover all the vocabulary prefixes. For example, out of 528\footnote{This number corresponds to the total number of vocabularies inserted in LOV as of January, 8th 2016.} vocabularies in LOV, 13 of them contain an hyphen and the system can not generate query (e.g., \texttt{elseweb-modelling}). Moreover, 21 prefixes contain a number (e.g., \texttt{g50k}) and 3 special cases (\texttt{homeActivity}, \texttt{LiMo}, and \texttt{juso.kr})and are not currently covered by the system. Currently, the system handles 92,99\% of the prefixes in LOV.
 
 %One of the issue dealing with QA over a vocabulary catalogue is to find relevant questions that can be asked against the system, based on the prefix. Since there is not a uniform way of describing a prefix, it is almost challenging to find the suitable pattern with NLP tools.  
 
@@ -226,10 +226,11 @@ All the questions which generated SPARQL query gives satisfactory results. The m
 %\input{conclusion}
 
 In this paper, we have presented a prototype system for answering a set of questions in natural language backed by a vocabulary catalogue. The questions are targeted to retrieve metadata information in vocabularies. \todo{may be emphasise on the impact for end users...}
-%The approach is based on the identification of the vocabulary prefix combining POS and regular expressions.
- The implementation uses the LOV dataset in RDF and the Quepy tool. The first results show that the system handles 92,99\% of the metadata of vocabularies in the LOV catalogue.
+The implementation uses the LOV dataset in RDF and the Quepy tool. The first results show that the system handles 92,99\% of the metadata of vocabularies in the LOV catalogue.
 We plan to extend the types of queries to more complex ones. Moreover, we can use various semantic relationships in LOV to do query expansion by using for instance sub-properties. 
 %Also, we intend to align the set of questions to the QALD challenges to make the system comparable to existing Question Answering systems.  
+
+%The approach is based on the identification of the vocabulary prefix combining POS and regular expressions.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%
 %%%  Acknowledgments  %%%
