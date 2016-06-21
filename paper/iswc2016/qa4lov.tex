@@ -15,6 +15,8 @@
 \usepackage{algorithmic}
 \usepackage{algorithm}
 \usepackage{verbatim}
+\usepackage{subfig}
+%\usepackage{lofdepth}
 
 %\newcommand{\keywords}[1]{\par\addvspace\baselineskip
 %\noindent\keywordname\enspace\ignorespaces#1}
@@ -150,12 +152,33 @@ Additionally, users could be interested in other interesting facts, such as the 
 
 The system receives as input a natural language question formulated in English and outputs the query that will retrieve the answer to the question from the LOV catalogue. The architecture of the system is illustrated in Fig.\ref{fig:q4lovarchi}. The system is available at \url{http://lov.okfn.org/dataset/lov/qa}.
 
-\begin{figure}[ht!b]
+\begin{figure}
 \centering
-\caption{Architecture of the system.}
-\includegraphics[scale=.6]{qa4lov-archi.pdf}
-\label{fig:q4lovarchi}
+\begin{subfigure}
+  \centering
+  \includegraphics[width=.4\linewidth]{img/qa4lov-archi.pdf}
+  \caption{A subfigure}
+  \label{fig:sub1}
+\end{subfigure}%
+\begin{subfigure}
+  \centering
+  \includegraphics[width=.4\linewidth]{img/qa-screenshot.png}
+  \caption{A subfigure}
+  \label{fig:sub2}
+\end{subfigure}
+\caption{A figure with two subfigures}
+\label{fig:test}
 \end{figure}
+
+
+
+
+%\begin{figure}[ht!b]
+%\centering
+%\caption{Architecture of the system.}
+%\includegraphics[scale=.6]{qa4lov-archi.pdf}
+%\label{fig:q4lovarchi}
+%\end{figure}
 \todo{make this figure way shorter and add a screenshot}
 
 The implementation uses the Quepy tool from Machinalis \footnote{\url{https://github.com/machinalis/quepy/}}. The POS tagset used by Quepy is the Penn Tagset \cite{marcus1993building}. First, regular expressions are defined to match the natural language questions and transform them into an abstract semantic representation. Then, specific templates are defined for the system to handle users' questions. To handle regular expressions, Quepy uses the \texttt{refo} library\footnote{\url{https://github.com/machinalis/refo}} which work with regular expressions as objects. 

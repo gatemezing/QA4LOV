@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9) (preloaded format=pdflatex 2015.2.18)  21 JUN 2016 12:11
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9) (preloaded format=pdflatex 2015.2.18)  21 JUN 2016 15:43
 entering extended mode
 **qa4lov.tex
 (D:\research\QA4LOV\paper\iswc2016\qa4lov.tex
@@ -498,7 +498,47 @@ Package: verbatim 2003/08/22 v1.5q LaTeX2e package for verbatim enhancements
 \verbatim@line=\toks29
 \verbatim@in@stream=\read1
 )
-("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\graphics\color.sty"
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\subfig\subfig.sty"
+Package: subfig 2005/06/28 ver: 1.3 subfig package
+
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\caption\caption.sty"
+Package: caption 2013/05/02 v3.3-89 Customizing captions (AR)
+
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\caption\caption3.sty"
+Package: caption3 2013/05/02 v1.6-88 caption3 kernel (AR)
+Package caption3 Info: TeX engine: e-TeX on input line 57.
+\captionmargin=\dimen139
+\captionmargin@=\dimen140
+\captionwidth=\dimen141
+\caption@tempdima=\dimen142
+\caption@indent=\dimen143
+\caption@parindent=\dimen144
+\caption@hangindent=\dimen145
+Package caption Info: Unknown document class (or package),
+(caption)             standard defaults will be used.
+)
+
+Package caption Warning: Unsupported document class (or package) detected,
+(caption)                usage of the caption package is not recommended.
+See the caption package documentation for explanation.
+
+Package caption Info: \@makecaption = \long macro:#1#2->\small \vskip \abovecap
+tionskip \sbox \@tempboxa {{\bfseries #1.} #2}\ifdim \wd \@tempboxa >\hsize {\b
+fseries #1.} #2\par \else \global \@minipagefalse \hb@xt@ \hsize {\hfil \box \@
+tempboxa \hfil }\fi \vskip \belowcaptionskip .
+\c@ContinuedFloat=\count136
+Package caption Info: float package is loaded.
+Package caption Info: listings package is loaded.
+Package caption Info: subfigure package is loaded.
+)
+\c@KVtest=\count137
+\sf@farskip=\skip55
+\sf@captopadj=\dimen146
+\sf@capskip=\skip56
+\sf@nearskip=\skip57
+\sf@top=\skip58
+\sf@bottom=\skip59
+) ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\graphics\color.sty"
 Package: color 2005/11/14 v1.0j Standard LaTeX Color (DPC)
 
 ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\00miktex\color.cfg"
@@ -506,89 +546,107 @@ File: color.cfg 2007/01/18 v1.5 color configuration of teTeX/TeXLive
 )
 Package color Info: Driver file: pdftex.def on input line 130.
 )
-\c@deflda=\count136
+\c@deflda=\count138
 
 (D:\research\QA4LOV\paper\iswc2016\qa4lov.aux)
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 35.
-LaTeX Font Info:    ... okay on input line 35.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 35.
-LaTeX Font Info:    ... okay on input line 35.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 35.
-LaTeX Font Info:    ... okay on input line 35.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 35.
-LaTeX Font Info:    ... okay on input line 35.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 35.
-LaTeX Font Info:    ... okay on input line 35.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 35.
-LaTeX Font Info:    ... okay on input line 35.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 37.
+LaTeX Font Info:    ... okay on input line 37.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 37.
+LaTeX Font Info:    ... okay on input line 37.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 37.
+LaTeX Font Info:    ... okay on input line 37.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 37.
+LaTeX Font Info:    ... okay on input line 37.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 37.
+LaTeX Font Info:    ... okay on input line 37.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 37.
+LaTeX Font Info:    ... okay on input line 37.
 
 ("C:\Program Files (x86)\MiKTeX 2.9\tex\context\base\supp-pdf.mkii"
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count137
-\scratchdimen=\dimen139
+\scratchcounter=\count139
+\scratchdimen=\dimen147
 \scratchbox=\box58
-\nofMPsegments=\count138
-\nofMParguments=\count139
+\nofMPsegments=\count140
+\nofMParguments=\count141
 \everyMPshowfont=\toks30
-\MPscratchCnt=\count140
-\MPscratchDim=\dimen140
-\MPnumerator=\count141
-\makeMPintoPDFobject=\count142
+\MPscratchCnt=\count142
+\MPscratchDim=\dimen148
+\MPnumerator=\count143
+\makeMPintoPDFobject=\count144
 \everyMPtoPDFconversion=\toks31
 )
-\c@lstlisting=\count143
-LaTeX Font Info:    Try loading font information for U+msa on input line 49.
+\c@lstlisting=\count145
+Package caption Info: Begin \AtBeginDocument code.
+Package caption Info: subfig package v1.3 is loaded.
+Package caption Info: End \AtBeginDocument code.
+LaTeX Font Info:    Try loading font information for U+msa on input line 51.
  ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\amsfonts\umsa.fd"
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 49.
+LaTeX Font Info:    Try loading font information for U+msb on input line 51.
 
 ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\amsfonts\umsb.fd"
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 96.
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 98.
 
 ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\base\omscmr.fd"
 File: omscmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/bx/n' in size <10> not available
-(Font)              Font shape `OMS/cmsy/b/n' tried instead on input line 96.
+(Font)              Font shape `OMS/cmsy/b/n' tried instead on input line 98.
  [1
 
-{C:/Users/Ghislain/AppData/Local/MiKTeX/2.9/pdftex/config/pdftex.map}] [2]
-<qa4lov-archi.pdf, id=18, 414.07603pt x 284.60518pt>
-File: qa4lov-archi.pdf Graphic file (type pdf)
- <use qa4lov-archi.pdf>
-Package pdftex.def Info: qa4lov-archi.pdf used on input line 156.
-(pdftex.def)             Requested size: 248.44753pt x 170.76442pt.
+{C:/Users/Ghislain/AppData/Local/MiKTeX/2.9/pdftex/config/pdftex.map}]
 
-[3 <D:/research/QA4LOV/paper/iswc2016/qa4lov-archi.pdf>]
-(D:\research\QA4LOV\paper\iswc2016\qa4lov.bbl) [4]
-(D:\research\QA4LOV\paper\iswc2016\qa4lov.aux) ) 
+LaTeX Warning: Reference `fig:q4lovarchi' on page 2 undefined on input line 153
+.
+
+[2] <img/qa4lov-archi.pdf, id=18, 414.07603pt x 284.60518pt>
+File: img/qa4lov-archi.pdf Graphic file (type pdf)
+
+<use img/qa4lov-archi.pdf>
+Package pdftex.def Info: img/qa4lov-archi.pdf used on input line 159.
+(pdftex.def)             Requested size: 138.84729pt x 95.4356pt.
+
+<img/qa-screenshot.png, id=19, 361.35pt x 211.992pt>
+File: img/qa-screenshot.png Graphic file (type png)
+
+<use img/qa-screenshot.png>
+Package pdftex.def Info: img/qa-screenshot.png used on input line 165.
+(pdftex.def)             Requested size: 138.84729pt x 81.45705pt.
+ [3 <D:/research/QA4LOV/paper/iswc2016/img/qa4lov-archi.pdf> <D:/research/QA4LO
+V/paper/iswc2016/img/qa-screenshot.png>]
+(D:\research\QA4LOV\paper\iswc2016\qa4lov.bbl [4]) [5]
+(D:\research\QA4LOV\paper\iswc2016\qa4lov.aux)
+
+LaTeX Warning: There were undefined references.
+
+ ) 
 Here is how much of TeX's memory you used:
- 4057 strings out of 493921
- 53366 string characters out of 3144867
- 117494 words of memory out of 3000000
- 7284 multiletter control sequences out of 15000+200000
+ 5185 strings out of 493921
+ 73871 string characters out of 3144867
+ 140019 words of memory out of 3000000
+ 8399 multiletter control sequences out of 15000+200000
  11907 words of font info for 46 fonts, out of 3000000 for 9000
  841 hyphenation exceptions out of 8191
- 29i,9n,32p,752b,289s stack positions out of 5000i,500n,10000p,200000b,50000s
-<C:/Program Files (x86)/MiKTeX 
-2.9/fonts/type1/public/amsfonts/cm/cmbsy10.pfb><C:/Program Files (x86)/MiKTeX 2
-.9/fonts/type1/public/amsfonts/cm/cmbx10.pfb><C:/Program Files (x86)/MiKTeX 2.9
-/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/Program Files (x86)/MiKTeX 2.9/f
-onts/type1/public/amsfonts/cm/cmbx9.pfb><C:/Program Files (x86)/MiKTeX 2.9/font
-s/type1/public/amsfonts/cm/cmbxti10.pfb><C:/Program Files (x86)/MiKTeX 2.9/font
-s/type1/public/amsfonts/cm/cmr10.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/t
-ype1/public/amsfonts/cm/cmr6.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1
-/public/amsfonts/cm/cmr7.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/pub
-lic/amsfonts/cm/cmr9.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/
-amsfonts/cm/cmti9.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/ams
-fonts/cm/cmtt10.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfo
-nts/cm/cmtt9.pfb>
-Output written on qa4lov.pdf (4 pages, 201003 bytes).
+ 44i,9n,42p,752b,319s stack positions out of 5000i,500n,10000p,200000b,50000s
+<C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbsy10.pfb
+><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx10.pfb><
+C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:
+/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx9.pfb><C:/Pr
+ogram Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbxti10.pfb><C:/Pr
+ogram Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Progr
+am Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr6.pfb><C:/Program F
+iles (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr7.pfb><C:/Program Files
+ (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr9.pfb><C:/Program Files (x8
+6)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmti9.pfb><C:/Program Files (x86)/
+MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmtt10.pfb><C:/Program Files (x86)/Mi
+KTeX 2.9/fonts/type1/public/amsfonts/cm/cmtt9.pfb>
+Output written on qa4lov.pdf (5 pages, 257235 bytes).
 PDF statistics:
- 103 PDF objects out of 1000 (max. 8388607)
+ 107 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
- 6 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 11 words of extra memory for PDF output out of 10000 (max. 10000000)
 
