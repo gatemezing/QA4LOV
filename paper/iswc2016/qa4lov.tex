@@ -25,8 +25,8 @@
 \usepackage{color}
 \newtheorem{deflda}{Axiom}
 \newcommand{\todo}[1]{\noindent\textcolor{red}{{\bf \{TODO}: #1{\bf \}}}}
-\newcommand{\neon}{NeOn }
-\newcommand{\protege}{Prot{\'e}g{\'e} }
+%\newcommand{\neon}{NeOn }
+%\newcommand{\protege}{Prot{\'e}g{\'e} }
 
 
 
@@ -123,13 +123,13 @@ The system receives as input a question formulated in English and outputs the qu
 
 The implementation uses the Quepy tool from Machinalis \footnote{\url{https://github.com/machinalis/quepy/}}. The POS tagset used by Quepy is the Penn Tagset \cite{marcus1993building}. First, regular expressions are defined to match the natural language questions and transform them into an abstract semantic representation. Then, specific templates are defined for the system to handle users' questions. To handle regular expressions, Quepy uses the \texttt{refo} library\footnote{\url{https://github.com/machinalis/refo}} which work with regular expressions as objects. 
 
-A vocabulary is defined by a fixed relation \texttt{voaf:Vocabulary} and a POS associated to a \texttt{vann:preferredNamespacePrefix}. LOV uses a unique prefix to identify namespaces, which is a string from length 2 to length 17, although the recommendation for publishers is to use a prefix with less than 10 characters.
+A vocabulary is defined by a fixed relation \texttt{voaf:Vocabulary} and a POS associated to a \texttt{vann:preferredNamespacePrefix}. LOV uses a unique prefix to identify namespaces, which is a string from length 2 to length 17, although the recommendation for publishers is to use a prefix with less than 10 characters. Our approach is based on attaching a regex to vocabulary represented by its prefix.
 %\cite{pybernard12}.  
 
-The syntactic processor is based on regular expressions using POS terms. As a vocabulary is identified by its prefix, we use  the following syntactic patterns: NN, NNS, FW, DT, JJ and VBN. Each question from Q1 to Q14 is associated to a unique template. After, when a prefix is recognized, the semantic interpreter uses fixed relations with the English tag, which are properties in RDF triple pattern. The code below show a regex for the contributors of a vocabulary 
+The syntactic processor is based on regular expressions using POS terms. As a vocabulary is identified by its prefix, we use  the following syntactic patterns: NN, NNS, FW, DT, JJ and VBN. Each question from Q1 to Q14 is associated to a unique template. After, when a prefix is recognized, the semantic interpreter uses fixed relations with the English tag, which are properties in RDF triple pattern. The code below shows a regex for the contributors of any vocabulary: 
 \begin{verbatim}
-regex1 = Pos("WP") + Lemma("be") + Pos("DT") + Lemma("contributor") + \
-        Pos("IN") + Vocabulary()
+regex1 = Pos("WP") + Lemma("be") + Pos("DT") + Lemma("contributor")  
+        + Pos("IN") + Vocabulary()
 \end{verbatim}
 
 %\todo{provide an example of regex?}
@@ -181,7 +181,7 @@ LOV is a highly curated observatory of the semantic vocabularies ecosystem, with
 %\item The different languages in which the vocabulary is available.
 %\end{itemize}
 
-Additionally, users could be interested in other interesting facts, such as the number of versions, the number of datasets  using the vocabulary, the number of external vocabularies reusing the vocabulary and the category to which belong the vocabulary. A first set of 14 questions in natural language can be handle by the prototype, covering different type of metadata information available in a vocabulary. Table \ref{tab:qtable} shows the list of questions, where in the column ``Template'', [be] can be either the present or the past form of the verb, and [vocab] is the preferred prefix of the vocabulary. The regex uses lemmas to combine different types of the questions accordingly.
+Additionally, users could be interested in other interesting facts, such as the number of versions, the number of datasets  using the vocabulary, the number of external vocabularies reusing the vocabulary and the category to which belong the vocabulary. A first set of 14 templates can be handled by the prototype, covering different type of metadata information available in a vocabulary. Table \ref{tab:qtable} shows the list of questions, where in the column ``Template'', [be] can be either the present or the past form of the verb, and [vocab] is the preferred prefix of the vocabulary. The regex uses lemmas to combine different types of the questions accordingly.
 %\todo{Here we have the feeling only be and vocab can change whereas in reality we use lemma or other words...}    
 
 \begin{table*}

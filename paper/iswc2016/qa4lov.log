@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9) (preloaded format=pdflatex 2015.2.18)  21 JUN 2016 16:58
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9) (preloaded format=pdflatex 2015.2.18)  22 AUG 2016 10:38
 entering extended mode
 **qa4lov.tex
 (D:\research\QA4LOV\paper\iswc2016\qa4lov.tex
@@ -591,59 +591,50 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 ) [1
 
 {C:/Users/Ghislain/AppData/Local/MiKTeX/2.9/pdftex/config/pdftex.map}]
-<img/qa4lov-archi.pdf, id=13, 414.07603pt x 284.60518pt>
-File: img/qa4lov-archi.pdf Graphic file (type pdf)
+<img/qa4lov-archi.png, id=13, 392.1852pt x 276.5532pt>
+File: img/qa4lov-archi.png Graphic file (type png)
 
-<use img/qa4lov-archi.pdf>
-Package pdftex.def Info: img/qa4lov-archi.pdf used on input line 116.
-(pdftex.def)             Requested size: 138.84729pt x 95.4356pt.
+<use img/qa4lov-archi.png>
+Package pdftex.def Info: img/qa4lov-archi.png used on input line 100.
+(pdftex.def)             Requested size: 138.84729pt x 97.9091pt.
 
-<img/qa-screenshot.png, id=14, 361.35pt x 211.992pt>
+<img/qa-screenshot.png, id=15, 361.35pt x 211.992pt>
 File: img/qa-screenshot.png Graphic file (type png)
 
 <use img/qa-screenshot.png>
-Package pdftex.def Info: img/qa-screenshot.png used on input line 122.
+Package pdftex.def Info: img/qa-screenshot.png used on input line 106.
 (pdftex.def)             Requested size: 173.56177pt x 101.82292pt.
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 138.
-
-
-("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\base\omscmr.fd"
-File: omscmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
-)
-LaTeX Font Info:    Font shape `OMS/cmr/bx/n' in size <10> not available
-(Font)              Font shape `OMS/cmsy/b/n' tried instead on input line 138.
- [2 <D:/research/QA4LOV/paper/iswc2016/img/qa4lov-archi.pdf> <D:/research/QA4LO
+ [2 <D:/research/QA4LOV/paper/iswc2016/img/qa4lov-archi.png> <D:/research/QA4LO
 V/paper/iswc2016/img/qa-screenshot.png>]
-Overfull \hbox (25.62321pt too wide) in paragraph at lines 147--147
+Overfull \hbox (4.6234pt too wide) in paragraph at lines 131--131
 []\OT1/cmtt/m/n/10 regex1 = Pos("WP") + Lemma("be") + Pos("DT") + Lemma("contri
-butor") + \ 
+butor") 
  []
 
-[3] (D:\research\QA4LOV\paper\iswc2016\qa4lov.bbl [4]) [5]
+[3] (D:\research\QA4LOV\paper\iswc2016\qa4lov.bbl) [4]
 (D:\research\QA4LOV\paper\iswc2016\qa4lov.aux) ) 
 Here is how much of TeX's memory you used:
- 5180 strings out of 493921
- 73825 string characters out of 3144867
- 142049 words of memory out of 3000000
- 8396 multiletter control sequences out of 15000+200000
- 11202 words of font info for 44 fonts, out of 3000000 for 9000
+ 5158 strings out of 493921
+ 73470 string characters out of 3144867
+ 142026 words of memory out of 3000000
+ 8378 multiletter control sequences out of 15000+200000
+ 10947 words of font info for 43 fonts, out of 3000000 for 9000
  841 hyphenation exceptions out of 8191
  44i,9n,42p,715b,319s stack positions out of 5000i,500n,10000p,200000b,50000s
 <C:/Program Files (x86)/MiKTeX 
-2.9/fonts/type1/public/amsfonts/cm/cmbsy10.pfb><C:/Program Files (x86)/MiKTeX 2
-.9/fonts/type1/public/amsfonts/cm/cmbx10.pfb><C:/Program Files (x86)/MiKTeX 2.9
-/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/Program Files (x86)/MiKTeX 2.9/f
-onts/type1/public/amsfonts/cm/cmbx9.pfb><C:/Program Files (x86)/MiKTeX 2.9/font
-s/type1/public/amsfonts/cm/cmr10.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/t
-ype1/public/amsfonts/cm/cmr6.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1
-/public/amsfonts/cm/cmr7.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/pub
-lic/amsfonts/cm/cmr9.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/
-amsfonts/cm/cmti9.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/ams
-fonts/cm/cmtt10.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfo
-nts/cm/cmtt9.pfb>
-Output written on qa4lov.pdf (5 pages, 247360 bytes).
+2.9/fonts/type1/public/amsfonts/cm/cmbx10.pfb><C:/Program Files (x86)/MiKTeX 2.
+9/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/Program Files (x86)/MiKTeX 2.9/
+fonts/type1/public/amsfonts/cm/cmbx9.pfb><C:/Program Files (x86)/MiKTeX 2.9/fon
+ts/type1/public/amsfonts/cm/cmr10.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/
+type1/public/amsfonts/cm/cmr6.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type
+1/public/amsfonts/cm/cmr7.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/pu
+blic/amsfonts/cm/cmr9.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public
+/amsfonts/cm/cmti9.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/am
+sfonts/cm/cmtt10.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsf
+onts/cm/cmtt9.pfb>
+Output written on qa4lov.pdf (4 pages, 311637 bytes).
 PDF statistics:
- 103 PDF objects out of 1000 (max. 8388607)
+ 59 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
  11 words of extra memory for PDF output out of 10000 (max. 10000000)
 
